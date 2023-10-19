@@ -1,27 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import CategoryTable from "@/components/CategoryTable";
+import { Category } from "@/types/Category";
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { LinkIcon } from "lucide-react";
-
-interface FoodItem {
-  name: string;
-  buff: string;
-  icon: string;
-}
-
-const food: FoodItem[] = [
+const food: Category[] = [
   {
     name: "Larva Meat",
     buff: "6% Crit Hit Chance",
     icon: "https://static.wikia.nocookie.net/core-keeper/images/0/0b/Larva_Meat.png/revision/latest?cb=20220215183222",
+  },
+  {
+    name: "Carrock",
+    buff: "23 Armor",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/c/c1/Carrock.png/revision/latest?cb=20220215182803"
   },
   {
     name: "Shiny Larva Meat",
@@ -85,8 +76,13 @@ const food: FoodItem[] = [
   },
   {
     name: "Black Steel Urchin",
-    buff: "15 Thorns",
+    buff: "15 Thorns & 22 Armor",
     icon: "https://static.wikia.nocookie.net/core-keeper/images/5/5e/Black_Steel_Urchin.png/revision/latest?cb=20220308213910",
+  },
+  {
+    name: "Green Blister Head",
+    buff: "Immune to Acid Damage",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/f/f3/Green_Blister_Head.png/revision/latest?cb=20220308213938",
   },
 ];
 
@@ -108,39 +104,7 @@ export default function Combat() {
         <h1 className="text-2xl font-bold">Combat Food</h1>
       </header>
       <section className="w-11/12 h-fit pb-5 infocard-fancy">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Item</TableHead>
-              <TableHead>Buff</TableHead>
-              <TableHead>Wiki Link</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {food.map((f, i) => {
-              return (
-                <TableRow key={i}>
-                  <TableCell className="flex flex-row items-center gap-2">
-                    <Image src={f.icon} alt="Icon" width={32} height={32} />
-                    {f.name}
-                  </TableCell>
-                  <TableCell>{f.buff}</TableCell>
-                  <TableCell>
-                    <a
-                      href={`https://core-keeper.fandom.com/wiki/${f.name
-                        .split(" ")
-                        .join("_")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LinkIcon />
-                    </a>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
+        <CategoryTable category={food} />
       </section>
     </main>
   );

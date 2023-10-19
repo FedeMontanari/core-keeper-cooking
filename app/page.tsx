@@ -82,7 +82,7 @@ export default function Home() {
         <div className="infocard-fancy w-11/12 h-fit mt-10">
           <p className="text-lg text-center">
             Welcome to the Ultimate Core Keeper Cooking Guide! <br /> Fanmade
-            with love as an alternative to the in-game recipes book.
+            with <span className="text-red-600">&lt;3</span> as an alternative to the in-game recipes book.
           </p>
         </div>
         <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
