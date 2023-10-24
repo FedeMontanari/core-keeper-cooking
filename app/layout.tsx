@@ -15,7 +15,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="w-screen h-screen overflow-x-hidden">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          enableSystem={false}
+          defaultTheme="dark"
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

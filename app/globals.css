@@ -51,6 +51,9 @@ body {
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    --rarity-outline: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
   }
 
   .dark {
@@ -101,6 +104,36 @@ body {
   height: 64px;
   background-image: url("https://static.wikia.nocookie.net/core-keeper/images/c/cd/Infobox-item-slot.png");
   background-size: contain;
+}
+
+.rarity-poor {
+  color: rgb(180, 180, 180);
+  text-shadow: var(--rarity-outline);
+}
+
+.rarity-common {
+  color: rgb(255, 255, 255);
+  text-shadow: var(--rarity-outline);
+}
+
+.rarity-uncommon {
+  color: rgb(66, 203, 90);
+  text-shadow: var(--rarity-outline);
+}
+
+.rarity-rare {
+  color: rgb(59, 147, 255);
+  text-shadow: var(--rarity-outline);
+}
+
+.rarity-epic {
+  color: rgb(209, 69, 194);
+  text-shadow: var(--rarity-outline);
+}
+
+.rarity-legendary {
+  color: rgb(255, 186, 24);
+  text-shadow: var(--rarity-outline);
 }
 
 /* @layer base {

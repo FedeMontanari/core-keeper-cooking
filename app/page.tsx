@@ -11,10 +11,16 @@ interface NameUrl {
 
 const categories: NameUrl[] = [
   {
-    name: "Combat",
+    name: "Offensive",
     icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/2/27/Copper_Sword.png",
-    url: "combat",
+      "https://static.wikia.nocookie.net/core-keeper/images/c/c7/Iron_Sword.png/revision/latest?cb=20220313022945",
+    url: "offensive",
+  },
+  {
+    name: "Defensive",
+    icon_url:
+      "https://static.wikia.nocookie.net/core-keeper/images/f/ff/Iron_Shield.png/revision/latest?cb=20231004093911",
+    url: "defensive",
   },
   {
     name: "Skills",
@@ -23,16 +29,10 @@ const categories: NameUrl[] = [
     url: "skills",
   },
   {
-    name: "Movement",
+    name: "Miscellaneous",
     icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/9/9a/Gotta_go_fast!.png",
-    url: "movement",
-  },
-  {
-    name: "Vitality",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/5/58/Healing_potency.png",
-    url: "vitality",
+      "https://static.wikia.nocookie.net/core-keeper/images/b/b8/Recall_Idol.png/revision/latest?cb=20220313041921",
+    url: "misc",
   },
 ];
 
@@ -82,7 +82,45 @@ export default function Home() {
         <div className="infocard-fancy w-11/12 h-fit mt-10">
           <p className="text-lg text-center">
             Welcome to the Ultimate Core Keeper Cooking Guide! <br /> Fanmade
-            with <span className="text-red-600">&lt;3</span> as an alternative to the in-game recipes book.
+            with <span className="text-red-600">&lt;3</span> as an alternative
+            to the in-game recipes book.
+          </p>
+        </div>
+        <div className="infocard w-11/12 h-fit">
+          <p className="text-center text-lg">
+            <span className="border-b">How to use:</span>
+            <br />
+            All food items give a base food value plus a Health per second buff,
+            this guide only covers (mostly) the bonus buff, which you get by
+            cooking said item.
+            <br />
+            <br />
+            <span className="border-b">For example:</span>
+            <br />
+            If you cook a{" "}
+            <Image
+              src="https://static.wikia.nocookie.net/core-keeper/images/0/00/Orange_Cave_Guppy.png/revision/latest?cb=20220308213951"
+              alt="Icon"
+              width={32}
+              height={32}
+              className="inline"
+            />{" "}
+            <div className="inline bg-secondary rarity-common py-1">
+              Orange Cave Guppy
+            </div>{" "}
+            with a{" "}
+            <Image
+              src="https://static.wikia.nocookie.net/core-keeper/images/6/6c/Bottom_Tracer.png/revision/latest?cb=20220615093330"
+              alt="Icon"
+              width={32}
+              height={32}
+              className="inline"
+            />{" "}
+            <div className="inline bg-secondary rarity-common py-1">
+              Bottom Tracer
+            </div>{" "}
+            the result food will have 77 Mining Damage buff (8 + 69) plus
+            whatever food and HP/Sec value it gets.
           </p>
         </div>
         <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
@@ -112,7 +150,7 @@ export default function Home() {
           <ul className="flex flex-row justify-evenly w-full mt-4">
             {contact.map((c, i) => {
               return (
-                <li key={i}>
+                <li key={i} className="p-3 rounded-xl hover:bg-secondary">
                   <a
                     href={c.url}
                     className="flex flex-col-reverse items-center justify-center"
@@ -140,7 +178,7 @@ export default function Home() {
             Images and assets obtained from:{" "}
             <Link
               href="https://core-keeper.fandom.com/wiki/Core_Keeper_Wiki"
-              className="font-bold border-b"
+              className="font-bold border-b hover:text-blue-500"
             >
               The Core Keeper Wiki
             </Link>

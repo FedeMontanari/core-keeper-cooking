@@ -41,7 +41,9 @@ export default function CategoryTable({
             <TableRow key={i}>
               <TableCell className="flex flex-row items-center gap-2">
                 <Image src={f.icon} alt="Icon" width={32} height={32} />
-                {f.name}
+                <span className={`rarity-${f.rarity.toLocaleLowerCase()}`}>
+                  {f.name}
+                </span>
               </TableCell>
               <TableCell>{f.buff}</TableCell>
               <TableCell>
