@@ -125,7 +125,7 @@ export default function Home() {
         </div>
         <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
           <h3 className="text-2xl">Select a category</h3>
-          <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit">
+          <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit flex-wrap">
             {categories.map((c, i) => {
               return (
                 <li key={i} className="flex flex-col items-center text-center">
@@ -147,7 +147,7 @@ export default function Home() {
         </div>
         <div className="infocard-fancy w-11/12 h-fit flex flex-col items-center justify-center mb-5">
           <p className="text-lg">Game Links:</p>
-          <ul className="flex flex-row justify-evenly w-full mt-4">
+          <ul className="flex flex-row justify-evenly w-full mt-4 flex-wrap">
             {contact.map((c, i) => {
               return (
                 <li key={i} className="p-3 rounded-xl hover:bg-secondary">
@@ -176,12 +176,14 @@ export default function Home() {
           </ul>
           <p className="mt-5">
             Images and assets obtained from:{" "}
-            <Link
+            <a
               href="https://core-keeper.fandom.com/wiki/Core_Keeper_Wiki"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-bold border-b hover:text-blue-500"
             >
               The Core Keeper Wiki
-            </Link>
+            </a>
           </p>
         </div>
       </section>
