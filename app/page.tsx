@@ -98,29 +98,36 @@ export default function Home() {
             <span className="border-b">For example:</span>
             <br />
             If you cook a{" "}
-            <Image
-              src="https://static.wikia.nocookie.net/core-keeper/images/0/00/Orange_Cave_Guppy.png/revision/latest?cb=20220308213951"
-              alt="Icon"
-              width={32}
-              height={32}
-              className="inline"
-            />{" "}
-            <div className="inline bg-secondary rarity-common py-1">
-              Orange Cave Guppy
-            </div>{" "}
+            <span className="bg-secondary rarity-common py-1">
+              <Image
+                alt="icon"
+                src="https://static.wikia.nocookie.net/core-keeper/images/8/8c/Mushroom.png/revision/latest?cb=20220402051337"
+                height={24}
+                width={24}
+                className="inline"
+              />
+              Mushroom
+            </span>{" "}
             with a{" "}
-            <Image
-              src="https://static.wikia.nocookie.net/core-keeper/images/6/6c/Bottom_Tracer.png/revision/latest?cb=20220615093330"
-              alt="Icon"
-              width={32}
-              height={32}
-              className="inline"
-            />{" "}
-            <div className="inline bg-secondary rarity-common py-1">
-              Bottom Tracer
-            </div>{" "}
-            the result food will have 77 Mining Damage buff (8 + 69) plus
-            whatever food and HP/Sec value it gets.
+            <span className="bg-secondary rarity-common py-1">
+              <Image
+                alt="icon"
+                src="https://static.wikia.nocookie.net/core-keeper/images/d/da/Heart_Berry.png/revision/latest?cb=20220215171902"
+                height={24}
+                width={24}
+                className="inline"
+              />
+              Heart Berry
+            </span>{" "}
+            the result food will have 4.2 HP/sec and +25 Max Health (From
+            Mushroom and Heart Berry respectively).
+            <br />
+            <br />
+            <span className="border-b">Notes:</span>
+            <br />
+            Items that share the same buff do NOT stack with each other, meaning
+            if you combine 2 items that give Mining Damage, the final product
+            will have the highest value of the two ingredients.
           </p>
         </div>
         <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
