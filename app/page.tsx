@@ -64,6 +64,21 @@ const contact: NameUrl[] = [
   },
 ];
 
+const tools: NameUrl[] = [
+  {
+    name: "Calculator",
+    url: "calculator",
+    icon_url:
+      "https://static.wikia.nocookie.net/core-keeper/images/3/36/Admin_Key.png/revision/latest?cb=20220615093300",
+  },
+  {
+    name: "Full List",
+    url: "list",
+    icon_url:
+      "https://static.wikia.nocookie.net/core-keeper/images/e/e6/Cipher_Parchment.png",
+  },
+];
+
 export default function Home() {
   return (
     <main className="w-full h-full flex items-center justify-start flex-col">
@@ -130,30 +145,60 @@ export default function Home() {
             will have the highest value of the two ingredients.
           </p>
         </div>
-        <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
-          <h3 className="text-2xl">Select a category</h3>
-          <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit flex-wrap">
-            {categories.map((c, i) => {
-              return (
-                <li key={i} className="flex flex-col items-center text-center">
-                  <div className="content-icon w-fit h-fit p-2">
-                    <Link href={`/category/${c.url}`}>
-                      <Image
-                        src={c.icon_url}
-                        alt="Category Icon"
-                        width={64}
-                        height={64}
-                      />
-                    </Link>
-                  </div>
-                  <p>{c.name}</p>
-                </li>
-              );
-            })}
-          </ul>
+        <div className="flex flex-row w-11/12 h-fit flex-nowrap gap-3">
+          <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
+            <h3 className="text-2xl">Tools</h3>
+            <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit flex-wrap">
+              {tools.map((c, i) => {
+                return (
+                  <li
+                    key={i}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <div className="content-icon w-fit h-fit p-2">
+                      <Link href={`/tools/${c.url}`}>
+                        <Image
+                          src={c.icon_url}
+                          alt="Category Icon"
+                          width={64}
+                          height={64}
+                        />
+                      </Link>
+                    </div>
+                    <p>{c.name}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
+            <h3 className="text-2xl">Find by category</h3>
+            <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit flex-wrap">
+              {categories.map((c, i) => {
+                return (
+                  <li
+                    key={i}
+                    className="flex flex-col items-center text-center"
+                  >
+                    <div className="content-icon w-fit h-fit p-2">
+                      <Link href={`/category/${c.url}`}>
+                        <Image
+                          src={c.icon_url}
+                          alt="Category Icon"
+                          width={64}
+                          height={64}
+                        />
+                      </Link>
+                    </div>
+                    <p>{c.name}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
         <div className="infocard-fancy w-11/12 h-fit flex flex-col items-center justify-center mb-5">
-          <p className="text-lg">Game Links:</p>
+          <p className="text-lg">Official Game Links:</p>
           <ul className="flex flex-row justify-evenly w-full mt-4 flex-wrap">
             {contact.map((c, i) => {
               return (
@@ -181,17 +226,31 @@ export default function Home() {
               );
             })}
           </ul>
-          <p className="mt-5">
-            Images and assets obtained from:{" "}
-            <a
-              href="https://core-keeper.fandom.com/wiki/Core_Keeper_Wiki"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold border-b hover:text-blue-500"
-            >
-              The Core Keeper Wiki
-            </a>
-          </p>
+          <div className="flex flex-col justify-center items-center">
+            <p className="mt-5">Images, assets and data obtained from:</p>
+            <ul className="text-center">
+              <li>
+                <a
+                  href="https://core-keeper.fandom.com/wiki/Core_Keeper_Wiki"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold border-b hover:text-blue-500"
+                >
+                  The Fandom Wiki
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://corekeeper.atma.gg/en/Core_Keeper_Wiki"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold border-b hover:text-blue-500"
+                >
+                  The Atma Wiki
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>

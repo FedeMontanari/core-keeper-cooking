@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/core-keeper/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "corekeeper.atma.gg",
+        port: "",
+        pathname: "/english/images/**",
+      },
     ],
   },
 };

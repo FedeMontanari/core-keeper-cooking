@@ -2,5 +2,5 @@ export interface Category {
   name: string;
   buff: string;
   icon: string;
-  rarity: "poor" | "common" | "uncommon" | "rare" | "epic" | "legendary";
+  rarity: 0 | 1 | 2 | 3 | 4 | 5;
 }

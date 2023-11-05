@@ -106,32 +106,34 @@ body {
   background-size: contain;
 }
 
-.rarity-poor {
+/* Poor */
+.rarity-0 {
   color: rgb(180, 180, 180);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-common {
+.rarity-1 {
   color: rgb(255, 255, 255);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-uncommon {
+.rarity-2 {
   color: rgb(66, 203, 90);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-rare {
+.rarity-3 {
   color: rgb(59, 147, 255);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-epic {
+.rarity-4 {
   color: rgb(209, 69, 194);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-legendary {
+/* Legendary */
+.rarity-5 {
   color: rgb(255, 186, 24);
   text-shadow: var(--rarity-outline);
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CategoryHeader({ catName }: { catName: string }) {
+export default function ToolHeader({ toolName }: { toolName: string }) {
   return (
     <header className="flex flex-row w-screen h-fit items-center justify-center gap-4 border-b bg-primary-foreground fixed z-50">
       <Link href="/" className="absolute left-6">
@@ -15,7 +15,7 @@ export default function CategoryHeader({ catName }: { catName: string }) {
         width={100}
         height={50}
       />
-      <h1 className="text-2xl font-bold">{catName} Food</h1>
+      <h1 className="text-2xl font-bold">{toolName}</h1>
     </header>
   );
 }
