@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Food {
+  id        Int      @id @default(autoincrement())
+  slug      String
+  name      String
+  foodValue Int
+  hps       Float
+  hpBoost   Int?
+  buffs     Buff[]
+  icon      String
+  rarity    Rarity   @relation(fields: [rarityId], references: [id])
+  createdAt DateTime @default(now())
+  rarityId  Int
+}
+
+model Rarity {
+  id   Int    @id
+  slug String
+  name String
+  Food Food[]
+}
+
+model Buff {
+  id         Int      @id @default(autoincrement())
+  value      Float
+  duration   Int
+  type       BuffType @relation(fields: [buffTypeId], references: [id])
+  buffTypeId Int
+  Food       Food?    @relation(fields: [foodId], references: [id])
+  foodId     Int?
+}
+
+model BuffType {
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String
+  buff Buff[]
+}

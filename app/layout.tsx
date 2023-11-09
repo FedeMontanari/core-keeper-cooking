@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Core Keeper Cooking",
-  description: "Made with <3 by @Yaki",
+  description: "Made with <3 by Yaki",
 };
 
 export default function RootLayout({
