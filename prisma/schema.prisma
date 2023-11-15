@@ -12,13 +12,15 @@ datasource db {
 
 model Food {
   id        Int      @id @default(autoincrement())
-  slug      String
   name      String
+  slug      String
   foodValue Int
   hps       Float
+  icon_url  String
   hpBoost   Int?
+  variation Int?
+  ingameId  Int
   buffs     Buff[]
-  icon      String
   rarity    Rarity   @relation(fields: [rarityId], references: [id])
   createdAt DateTime @default(now())
   rarityId  Int

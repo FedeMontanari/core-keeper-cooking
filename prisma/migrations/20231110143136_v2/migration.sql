@@ -1,12 +1,14 @@
 -- CreateTable
 CREATE TABLE "Food" (
     "id" SERIAL NOT NULL,
-    "slug" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "foodValue" INTEGER NOT NULL,
     "hps" DOUBLE PRECISION NOT NULL,
+    "icon_url" TEXT NOT NULL,
     "hpBoost" INTEGER,
-    "icon" TEXT NOT NULL,
+    "variation" INTEGER,
+    "ingameId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "rarityId" INTEGER NOT NULL,
 
@@ -27,8 +29,8 @@ CREATE TABLE "Buff" (
     "id" SERIAL NOT NULL,
     "value" DOUBLE PRECISION NOT NULL,
     "duration" INTEGER NOT NULL,
-    "foodId" INTEGER NOT NULL,
     "buffTypeId" INTEGER NOT NULL,
+    "foodId" INTEGER,
 
     CONSTRAINT "Buff_pkey" PRIMARY KEY ("id")
 );
@@ -49,4 +51,4 @@ ALTER TABLE "Food" ADD CONSTRAINT "Food_rarityId_fkey" FOREIGN KEY ("rarityId") 
 ALTER TABLE "Buff" ADD CONSTRAINT "Buff_buffTypeId_fkey" FOREIGN KEY ("buffTypeId") REFERENCES "BuffType"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Buff" ADD CONSTRAINT "Buff_foodId_fkey" FOREIGN KEY ("foodId") REFERENCES "Food"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Buff" ADD CONSTRAINT "Buff_foodId_fkey" FOREIGN KEY ("foodId") REFERENCES "Food"("id") ON DELETE SET NULL ON UPDATE CASCADE;

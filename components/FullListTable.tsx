@@ -20,31 +20,38 @@ import {
 
 import Image from "next/image";
 import { LinkIcon } from "lucide-react";
-import { Category } from "@/types/Category";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
+import { BuffType } from "@/types/Buffs";
+import { Buff, Food } from "@prisma/client";
 
 interface TableCaption {
   show: boolean;
   content: string;
 }
 
-export default function CategoryTable({
-  category,
+interface FoodBuff extends Food {
+  buffs: Buff[];
+}
+
+export default function FullListTable({
+  list,
+  buffTypes,
   caption,
   searchbar,
   ...props
 }: {
-  category: Category[];
+  list: FoodBuff[];
   caption?: TableCaption;
   searchbar?: boolean;
+  buffTypes?: BuffType[];
 }) {
   const [sortValue, setSortValue] = useState("");
-  const [searchArr, setSearchArr] = useState(category);
+  const [searchArr, setSearchArr] = useState(list);
 
   switch (sortValue) {
     case "asc":
-      category.sort((a, b) => {
+      list.sort((a, b) => {
         const nameA = a.name.toUpperCase();
         const nameB = b.name.toUpperCase();
         if (nameA < nameB) {
@@ -58,7 +65,7 @@ export default function CategoryTable({
       break;
 
     case "desc":
-      category.sort((a, b) => {
+      list.sort((a, b) => {
         const nameA = a.name.toUpperCase();
         const nameB = b.name.toUpperCase();
         if (nameA < nameB) {
@@ -72,11 +79,11 @@ export default function CategoryTable({
       break;
 
     case "rarity-asc":
-      category.sort((a, b) => a.rarity - b.rarity);
+      list.sort((a, b) => a.rarityId - b.rarityId);
       break;
 
     case "rarity-desc":
-      category.sort((a, b) => b.rarity - a.rarity);
+      list.sort((a, b) => b.rarityId - a.rarityId);
       break;
 
     default:
@@ -85,11 +92,11 @@ export default function CategoryTable({
 
   const searchBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
-      setSearchArr(category);
+      setSearchArr(list);
     }
     setSearchArr(
-      category.filter((cat) =>
-        cat.name.toLowerCase().includes(e.target.value.toLowerCase())
+      list.filter((f) =>
+        f.name.toLowerCase().includes(e.target.value.toLowerCase())
       )
     );
   };
@@ -134,10 +141,23 @@ export default function CategoryTable({
             return (
               <TableRow key={i}>
                 <TableCell className="flex flex-row items-center gap-2">
-                  <Image src={f.icon} alt="Icon" width={32} height={32} />
-                  <span className={`rarity-${f.rarity}`}>{f.name}</span>
+                  <Image src={f.icon_url} alt="Icon" width={32} height={32} />
+                  <span className={`rarity-${f.rarityId}`}>{f.name}</span>
                 </TableCell>
-                <TableCell>{f.buff}</TableCell>
+                <TableCell>
+                  <ul>
+                    {f.buffs?.map((b) => {
+                      const buffType = buffTypes?.find(
+                        (bt) => bt.id === b.buffTypeId
+                      );
+                      return (
+                        <li key={b.id}>
+                          {`+${b.value} ${buffType?.name} for ${b.duration} min.`}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </TableCell>
                 <TableCell>
                   <a
                     href={`https://core-keeper.fandom.com/wiki/${f.name
