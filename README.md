@@ -1,3 +1,8 @@
-# Core Keeper Cooking Cheat-Sheet
+# Core Keeper Cooking App
 
-Small passion project made with Next.JS for a little game I've been spending way too much time playing lately
+Passion project for a game. **_Work In Progress_**
+
+### To-Do:
+- Final details on the API.
+- Work out the API integration
+- Calculator feature.
