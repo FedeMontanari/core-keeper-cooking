@@ -103,17 +103,10 @@ export default function Home() {
         </div>
         <div className="infocard w-11/12 h-fit">
           <p className="text-center text-lg">
-            <span className="border-b">How to use:</span>
-            <br />
-            All food items give a base food value plus a Health per second buff,
-            this guide only covers (mostly) the bonus buff, which you get by
-            cooking said item.
-            <br />
-            <br />
-            <span className="border-b">For example:</span>
+            <span className="border-b font-bold">How it Works:</span>
             <br />
             If you cook a{" "}
-            <span className="bg-secondary rarity-common py-1">
+            <span className="bg-secondary rounded-xl rarity-common py-1">
               <Image
                 alt="icon"
                 src="https://static.wikia.nocookie.net/core-keeper/images/8/8c/Mushroom.png/revision/latest?cb=20220402051337"
@@ -124,7 +117,7 @@ export default function Home() {
               Mushroom
             </span>{" "}
             with a{" "}
-            <span className="bg-secondary rarity-common py-1">
+            <span className="bg-secondary rounded-xl rarity-common py-1">
               <Image
                 alt="icon"
                 src="https://static.wikia.nocookie.net/core-keeper/images/d/da/Heart_Berry.png/revision/latest?cb=20220215171902"
@@ -135,14 +128,33 @@ export default function Home() {
               Heart Berry
             </span>{" "}
             the result food will have 4.2 HP/sec and +25 Max Health (From
-            Mushroom and Heart Berry respectively).
+            Mushroom and Heart Berry respectively) plus a food value.
             <br />
             <br />
-            <span className="border-b">Notes:</span>
-            <br />
-            Items that share the same buff do NOT stack with each other, meaning
-            if you combine 2 items that give Mining Damage, the final product
-            will have the highest value of the two ingredients.
+            <span className="border-b font-bold">Notes:</span>
+            <div>
+              <ul className="list-disc px-5 py-3">
+                <li>
+                  Items that share the same buff do NOT stack with each other,
+                  meaning if you combine 2 items that give Mining Damage, the
+                  final dish will have the highest value of the two ingredients.
+                </li>
+                <br />
+                <li>
+                  There also exists a variation of the finished dish that has
+                  increased stats which you can get by getting the{" "}
+                  <a
+                    href="https://corekeeper.atma.gg/en/Master_chef"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold border-b hover:text-blue-500"
+                  >
+                    Master Chef
+                  </a>{" "}
+                  talent.
+                </li>
+              </ul>
+            </div>
           </p>
         </div>
         <div className="flex flex-row w-11/12 h-fit flex-nowrap gap-3">
@@ -227,7 +239,7 @@ export default function Home() {
             })}
           </ul>
           <div className="flex flex-col justify-center items-center">
-            <p className="mt-5">Images, assets and data obtained from:</p>
+            <p className="mt-5">Images, assets and data</p>
             <ul className="text-center">
               <li>
                 <a
