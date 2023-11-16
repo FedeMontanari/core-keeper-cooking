@@ -132,6 +132,7 @@ export default function FullListTable({
         <TableHeader>
           <TableRow>
             <TableHead>Item</TableHead>
+            <TableHead>Food Value</TableHead>
             <TableHead>Buff</TableHead>
             <TableHead>Wiki Link</TableHead>
           </TableRow>
@@ -144,18 +145,26 @@ export default function FullListTable({
                   <Image src={f.icon_url} alt="Icon" width={32} height={32} />
                   <span className={`rarity-${f.rarityId}`}>{f.name}</span>
                 </TableCell>
+                <TableCell>+{f.foodValue} Food</TableCell>
                 <TableCell>
                   <ul>
+                    {f.hps ? <li>+{f.hps} Health Per Second</li> : <></>}
                     {f.buffs?.map((b) => {
                       const buffType = buffTypes?.find(
                         (bt) => bt.id === b.buffTypeId
                       );
+                      const value = b.value ? `+${b.value} ` : "";
                       return (
                         <li key={b.id}>
-                          {`+${b.value} ${buffType?.name} for ${b.duration} min.`}
+                          {`${value}${buffType?.name} for ${b.duration} min.`}
                         </li>
                       );
                     })}
+                    {f.hpBoost ? (
+                      <li>+{f.hpBoost} Permanent Max Health (Only Once)</li>
+                    ) : (
+                      <></>
+                    )}
                   </ul>
                 </TableCell>
                 <TableCell>
