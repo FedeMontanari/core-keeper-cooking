@@ -11,6 +11,7 @@ export async function GET() {
       },
     },
   });
+  entries.sort((a, b) => a.id - b.id);
   return NextResponse.json(entries);
 }
 
