@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 
 import Image from "next/image";
-import { LinkIcon } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Category } from "@/types/Category";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
@@ -138,7 +138,7 @@ export default function CategoryTable({
                   <span className={`rarity-${f.rarity}`}>{f.name}</span>
                 </TableCell>
                 <TableCell>{f.buff}</TableCell>
-                <TableCell>
+                <TableCell className="flex items-center justify-center">
                   <a
                     href={`https://core-keeper.fandom.com/wiki/${f.name
                       .split(" ")
@@ -146,7 +146,7 @@ export default function CategoryTable({
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <LinkIcon />
+                    <ExternalLink />
                   </a>
                 </TableCell>
               </TableRow>

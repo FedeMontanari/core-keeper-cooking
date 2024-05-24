@@ -3,21 +3,17 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: PixelSquare;
+  font-family: "PixelSquare";
   src: url("../assets/fonts/Pixel\ Square\ 10.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: PixelSquare;
+  font-family: "PixelSquare";
   src: url("../assets/fonts/Pixel\ Square\ Bold10.ttf");
   font-weight: bold;
   font-style: normal;
-}
-
-body {
-  font-family: PixelSquare;
 }
 
 @layer base {

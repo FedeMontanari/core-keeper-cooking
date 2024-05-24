@@ -106,7 +106,7 @@ export default function Home() {
             <span className="border-b font-bold">How it Works:</span>
             <br />
             If you cook a{" "}
-            <span className="bg-secondary rounded-xl rarity-common py-1">
+            <span className="rarity-common py-1">
               <Image
                 alt="icon"
                 src="https://static.wikia.nocookie.net/core-keeper/images/8/8c/Mushroom.png/revision/latest?cb=20220402051337"
@@ -117,7 +117,7 @@ export default function Home() {
               Mushroom
             </span>{" "}
             with a{" "}
-            <span className="bg-secondary rounded-xl rarity-common py-1">
+            <span className="rarity-common py-1">
               <Image
                 alt="icon"
                 src="https://static.wikia.nocookie.net/core-keeper/images/d/da/Heart_Berry.png/revision/latest?cb=20220215171902"
