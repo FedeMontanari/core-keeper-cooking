@@ -1,5 +1,5 @@
-import FullListTable from "@/components/FullListTable";
-import ToolHeader from "@/components/ToolHeader";
+import FullListTable from "@/components/full-list-table";
+import ToolHeader from "@/components/tool-header";
 import { prisma } from "@/lib/prisma";
 
 const fetchData = async () => {

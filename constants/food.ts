@@ -1,8 +1,18 @@
-import CategoryHeader from "@/components/CategoryHeader";
-import CategoryTable from "@/components/CategoryTable";
-import { Category } from "@/types/Category";
+export interface Category {
+  name: string;
+  buff: string;
+  icon: string;
+  rarity: 0 | 1 | 2 | 3 | 4 | 5;
+}
 
-const food: Category[] = [
+interface Categories {
+  defensive: Category[];
+  misc: Category[];
+  offensive: Category[];
+  skills: Category[];
+}
+
+const offensive: Category[] = [
   {
     name: "Pewpaya",
     icon: "https://static.wikia.nocookie.net/core-keeper/images/6/66/Pewpaya.png/revision/latest?cb=20220615093633",
@@ -215,13 +225,174 @@ const food: Category[] = [
   },
 ];
 
-export default function Offensive() {
-  return (
-    <main className="w-full h-full flex items-center justify-start flex-col gap-5">
-      <CategoryHeader catName="Offensive" />
-      <section className="w-11/12 h-fit pb-5 infocard-fancy mt-24">
-        <CategoryTable category={food} />
-      </section>
-    </main>
-  );
-}
+const defensive: Category[] = [
+  {
+    name: "Gem Crab",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/c/ca/Gem_Crab.png/revision/latest?cb=20220308213932",
+    buff: "14 Armor",
+    rarity: 3,
+  },
+  {
+    name: "Carrock",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/c/c1/Carrock.png/revision/latest?cb=20220215182803",
+    buff: "23 Armor",
+    rarity: 2,
+  },
+  {
+    name: "Golden Carrock",
+    icon: "https://corekeeper.atma.gg/english/images/5/55/Golden_Carrock.png",
+    buff: "32 Armor & 11% Chance to Knockback",
+    rarity: 3,
+  },
+  {
+    name: "Black Steel Urchin",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/5/5e/Black_Steel_Urchin.png/revision/latest?cb=20220308213910",
+    buff: "15 Thorns & 22 Armor",
+    rarity: 3,
+  },
+  {
+    name: "Solid Spikeback",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/9/9d/Solid_Spikeback.png/revision/latest?cb=20221110110754",
+    buff: "50 Thorns & 38 Armor",
+    rarity: 1,
+  },
+  {
+    name: "Blue Cave Guppy",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/0/0c/Blue_Cave_Guppy.png/revision/latest?cb=20220308213911",
+    buff: "4% Dodge Chance",
+    rarity: 1,
+  },
+  {
+    name: "Golden Dart",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/f/f6/Golden_Dart.png/revision/latest?cb=20220615093502",
+    buff: "11% Dodge Chance",
+    rarity: 2,
+  },
+  {
+    name: "Puffungi",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/8/88/Puffungi.png/revision/latest?cb=20220314085109",
+    buff: "-6% Damage from Bosses",
+    rarity: 2,
+  },
+  {
+    name: "Golden Puffungi",
+    icon: "https://corekeeper.atma.gg/english/images/6/6c/Golden_Puffungi.png",
+    buff: "14% Damage Reduced From Bosses & 17% Damage Against Bosses",
+    rarity: 3,
+  },
+];
+
+const misc: Category[] = [
+  {
+    name: "Mushroom",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/8/8c/Mushroom.png/revision/latest?cb=20220402051337",
+    buff: "4.2 Health/Second",
+    rarity: 1,
+  },
+  {
+    name: "Heart Berry",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/d/da/Heart_Berry.png/revision/latest?cb=20220215171902",
+    buff: "25 Max Health",
+    rarity: 1,
+  },
+  {
+    name: "Golden Heart Berry",
+    icon: "https://corekeeper.atma.gg/english/images/4/4e/Golden_Heart_Berry.png",
+    buff: "62 Max Health & 21% Melee Damage",
+    rarity: 3,
+  },
+  {
+    name: "Glow Tulip",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/2/28/Glow_Tulip.png/revision/latest?cb=20220224161534",
+    buff: "4 Blue Glow",
+    rarity: 1,
+  },
+  {
+    name: "Bomb Pepper",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/4/44/Bomb_Pepper.png/revision/latest?cb=20220215182450",
+    buff: "21% Movement Speed",
+    rarity: 1,
+  },
+  {
+    name: "Golden Bomb Pepper",
+    icon: "https://corekeeper.atma.gg/english/images/c/c1/Golden_Bomb_Pepper.png",
+    buff: "34% Movement Speed & 4% Melee Attack Speed",
+    rarity: 3,
+  },
+  {
+    name: "Bloat Oat",
+    icon: "https://corekeeper.atma.gg/english/images/e/e6/Bloat_Oat.png",
+    buff: "43 Food & 9.1 Health/Second",
+    rarity: 2,
+  },
+  {
+    name: "Golden Bloat Oat",
+    icon: "https://corekeeper.atma.gg/english/images/a/a2/Golden_Bloat_Oat.png",
+    buff: "52 Food, 15 Health/Second & 12% Less Food Drained While Running",
+    rarity: 3,
+  },
+  {
+    name: "Bright Lava Eater",
+    icon: "https://corekeeper.atma.gg/english/images/5/55/Bright_Lava_Eater.png",
+    buff: "21% More Healing from Health Over Time",
+    rarity: 2,
+  },
+  {
+    name: "Amber Larva",
+    icon: "https://corekeeper.atma.gg/english/images/7/72/Amber_Larva.png",
+    buff: "+50 Permanent Max Health & 65 Max Health",
+    rarity: 4,
+  },
+];
+
+const skills: Category[] = [
+  {
+    name: "Astral Jelly",
+    buff: "63 Fishing",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/2/29/Astral_Jelly.png/revision/latest?cb=20220308213906",
+    rarity: 3,
+  },
+  {
+    name: "Orange Cave Guppy",
+    buff: "8 Mining Damage",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/0/00/Orange_Cave_Guppy.png/revision/latest?cb=20220308213951",
+    rarity: 1,
+  },
+  {
+    name: "Cave Crunch",
+    buff: "50 Mining Damage",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/b/b3/Cave_Crunch.png/revision/latest?cb=20220619062332",
+    rarity: 2,
+  },
+  {
+    name: "Bottom Tracer",
+    buff: "69 Mining Damage",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/6/6c/Bottom_Tracer.png/revision/latest?cb=20220615093330",
+    rarity: 1,
+  },
+  {
+    name: "White Coralotl",
+    buff: "6.5% mining Speed",
+    icon: "https://static.wikia.nocookie.net/core-keeper/images/0/05/White_Coralotl.png/revision/latest?cb=20220615093821",
+    rarity: 3,
+  },
+  {
+    name: "Grumpkin (EVENT)",
+    icon: "https://corekeeper.atma.gg/english/images/3/31/Grumpkin.png",
+    buff: "56 Mining Damage",
+    rarity: 2,
+  },
+  {
+    name: "Golden Grumpkin (EVENT)",
+    icon: "https://corekeeper.atma.gg/english/images/5/50/Golden_Grumpkin.png",
+    buff: "89 Mining Damage & 3% Mining Speed",
+    rarity: 3,
+  },
+];
+
+export const foods: Categories = {
+  offensive,
+  defensive,
+  misc,
+  skills,
+};

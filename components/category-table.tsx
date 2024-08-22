@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import {
   Select,
   SelectContent,
@@ -17,10 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import type { Category } from "@/constants/food";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
-import { Category } from "@/types/Category";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
 
@@ -97,6 +95,14 @@ export default function CategoryTable({
   return (
     <>
       <div className="flex flex-row flex-nowrap items-center justify-center gap-3">
+        {searchbar && (
+          <Input
+            onChange={searchBarChange}
+            type="text"
+            placeholder="Search by Name..."
+            className="w-1/2 self-end"
+          />
+        )}
         <div className="flex flex-col flex-nowrap items-center justify-center">
           <span>Sort by </span>
           <Select onValueChange={(v) => setSortValue(v)}>
@@ -111,14 +117,6 @@ export default function CategoryTable({
             </SelectContent>
           </Select>
         </div>
-        {searchbar && (
-          <Input
-            onChange={searchBarChange}
-            type="text"
-            placeholder="Search by Name..."
-            className="w-1/2 self-end"
-          />
-        )}
       </div>
       <Table>
         {caption?.show && <TableCaption>{caption.content}</TableCaption>}

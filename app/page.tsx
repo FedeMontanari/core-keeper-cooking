@@ -2,82 +2,7 @@ import Image from "next/image";
 import "./globals.css";
 import Link from "next/link";
 import simpleIconspath from "@/util/simpleIconsPath";
-
-interface NameUrl {
-  name: string;
-  icon_url: string;
-  url: string;
-}
-
-const categories: NameUrl[] = [
-  {
-    name: "Offensive",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/c/c7/Iron_Sword.png/revision/latest?cb=20220313022945",
-    url: "offensive",
-  },
-  {
-    name: "Defensive",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/f/ff/Iron_Shield.png/revision/latest?cb=20231004093911",
-    url: "defensive",
-  },
-  {
-    name: "Skills",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/c/c6/Golden_Starfish.png",
-    url: "skills",
-  },
-  {
-    name: "Miscellaneous",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/b/b8/Recall_Idol.png/revision/latest?cb=20220313041921",
-    url: "misc",
-  },
-];
-
-const contact: NameUrl[] = [
-  {
-    name: "Steam",
-    icon_url: "siSteam",
-    url: "https://store.steampowered.com/app/1621690/Core_Keeper/",
-  },
-  {
-    name: "Discord",
-    icon_url: "siDiscord",
-    url: "https://discord.gg/corekeeper/",
-  },
-  {
-    name: "Twitter",
-    icon_url: "siTwitter",
-    url: "https://twitter.com/CoreKeeperGame",
-  },
-  {
-    name: "Youtube",
-    icon_url: "siYoutube",
-    url: "https://www.youtube.com/channel/UCfnfwO-3cN97ZCZYLOWxjTg/",
-  },
-  {
-    name: "TikTok",
-    icon_url: "siTiktok",
-    url: "https://www.tiktok.com/@corekeepergame/",
-  },
-];
-
-const tools: NameUrl[] = [
-  {
-    name: "Calculator",
-    url: "calculator",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/3/36/Admin_Key.png/revision/latest?cb=20220615093300",
-  },
-  {
-    name: "Full List",
-    url: "list",
-    icon_url:
-      "https://static.wikia.nocookie.net/core-keeper/images/e/e6/Cipher_Parchment.png",
-  },
-];
+import { categories, contact, tools } from "@/constants/landing";
 
 export default function Home() {
   return (
@@ -102,7 +27,7 @@ export default function Home() {
           </p>
         </div>
         <div className="infocard w-11/12 h-fit">
-          <p className="text-center text-lg">
+          <div className="text-center text-lg">
             <span className="border-b font-bold">How it Works:</span>
             <br />
             If you cook a{" "}
@@ -155,7 +80,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-          </p>
+          </div>
         </div>
         <div className="flex flex-row w-11/12 h-fit flex-nowrap gap-3">
           <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
@@ -167,16 +92,17 @@ export default function Home() {
                     key={i}
                     className="flex flex-col items-center text-center"
                   >
-                    <div className="content-icon w-fit h-fit p-2">
-                      <Link href={`/tools/${c.url}`}>
-                        <Image
-                          src={c.icon_url}
-                          alt="Category Icon"
-                          width={64}
-                          height={64}
-                        />
-                      </Link>
-                    </div>
+                    <Link
+                      className="content-icon w-fit h-fit p-2"
+                      href={`/tools/${c.url}`}
+                    >
+                      <Image
+                        src={c.icon_url}
+                        alt="Category Icon"
+                        width={64}
+                        height={64}
+                      />
+                    </Link>
                     <p>{c.name}</p>
                   </li>
                 );
@@ -192,16 +118,17 @@ export default function Home() {
                     key={i}
                     className="flex flex-col items-center text-center"
                   >
-                    <div className="content-icon w-fit h-fit p-2">
-                      <Link href={`/category/${c.url}`}>
-                        <Image
-                          src={c.icon_url}
-                          alt="Category Icon"
-                          width={64}
-                          height={64}
-                        />
-                      </Link>
-                    </div>
+                    <Link
+                      className="content-icon w-fit h-fit p-1"
+                      href={`/category/${c.url}`}
+                    >
+                      <Image
+                        src={c.icon_url}
+                        alt="Category Icon"
+                        width={64}
+                        height={64}
+                      />
+                    </Link>
                     <p>{c.name}</p>
                   </li>
                 );

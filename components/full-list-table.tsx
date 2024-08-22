@@ -22,8 +22,8 @@ import Image from "next/image";
 import { LinkIcon } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
-import { BuffType } from "@/types/Buffs";
 import { Buff, Food } from "@prisma/client";
+import type { BuffType } from "@/types/food-buffs";
 
 interface TableCaption {
   show: boolean;

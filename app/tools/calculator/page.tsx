@@ -1,4 +1,4 @@
-import ToolHeader from "@/components/ToolHeader";
+import ToolHeader from "@/components/tool-header";
 import {
   Select,
   SelectContent,
