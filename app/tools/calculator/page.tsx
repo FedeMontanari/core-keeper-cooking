@@ -9,6 +9,7 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
+import { env } from "process";
 import React from "react";
 
 const fetchData = async () => {
@@ -24,8 +25,24 @@ const fetchData = async () => {
   };
 };
 
+const ENV = env.NODE_ENV;
+
 export default async function Calculator() {
   const { fullList, buffTypes } = await fetchData();
+
+  if (ENV !== "development") {
+    return (
+      <main className="w-full h-full flex items-center justify-start flex-col gap-5">
+        <ToolHeader toolName="Calculator" />
+        <section className="w-11/12 h-fit pb-5 infocard-fancy mt-24">
+          <div className="flex justify-center items-center flex-col">
+            <p className="text-xl border-b font-bold">Under Construction!</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+  
   return (
     <main className="w-full h-full flex items-center justify-start flex-col gap-5">
       <ToolHeader toolName="Calculator" />

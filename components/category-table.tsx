@@ -21,6 +21,7 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 interface TableCaption {
   show: boolean;
@@ -95,19 +96,10 @@ export default function CategoryTable({
   return (
     <>
       <div className="flex flex-row flex-nowrap items-center justify-center gap-3">
-        {searchbar && (
-          <Input
-            onChange={searchBarChange}
-            type="text"
-            placeholder="Search by Name..."
-            className="w-1/2 self-end"
-          />
-        )}
         <div className="flex flex-col flex-nowrap items-center justify-center">
-          <span>Sort by </span>
           <Select onValueChange={(v) => setSortValue(v)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select" />
+              <SelectValue placeholder="Filter by..." />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="desc">A-Z</SelectItem>
@@ -117,6 +109,14 @@ export default function CategoryTable({
             </SelectContent>
           </Select>
         </div>
+        {searchbar && (
+          <Input
+            onChange={searchBarChange}
+            type="text"
+            placeholder="Search by Name..."
+            className="w-1/2 self-end"
+          />
+        )}
       </div>
       <Table>
         {caption?.show && <TableCaption>{caption.content}</TableCaption>}
@@ -136,16 +136,18 @@ export default function CategoryTable({
                   <span className={`rarity-${f.rarity}`}>{f.name}</span>
                 </TableCell>
                 <TableCell>{f.buff}</TableCell>
-                <TableCell className="flex items-center justify-center">
-                  <a
-                    href={`https://core-keeper.fandom.com/wiki/${f.name
-                      .split(" ")
-                      .join("_")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink />
-                  </a>
+                <TableCell className="p-0 text-center">
+                  <Button asChild variant="link" className="p-0">
+                    <a
+                      href={`https://core-keeper.fandom.com/wiki/${f.name
+                        .split(" ")
+                        .join("_")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink />
+                    </a>
+                  </Button>
                 </TableCell>
               </TableRow>
             );

@@ -14,7 +14,7 @@ export default function CategoryFoodPage({
       <CategoryHeader
         catName={`${params.slug[0].toUpperCase() + params.slug.slice(1)}`}
       />
-      <section className="w-11/12 h-fit infocard-fancy mt-24">
+      <section className="infocard-fancy mt-24">
         <CategoryTable category={foods[params.slug]} searchbar={true} />
       </section>
     </main>

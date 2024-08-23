@@ -22,7 +22,7 @@ model Food {
   variation Int?
   ingameId  Int
   buffs     Buff[]
-  rarity    Rarity   @relation(fields: [rarityId], references: [id])
+  rarity    Rarity   @relation(fields: [rarityId], references: [id], onDelete: Cascade, map: "rarityId")
   createdAt DateTime @default(now())
   rarityId  Int
 }
@@ -38,9 +38,9 @@ model Buff {
   id         Int      @id @default(autoincrement())
   value      Float
   duration   Int
-  type       BuffType @relation(fields: [buffTypeId], references: [id])
+  type       BuffType @relation(fields: [buffTypeId], references: [id], onDelete: Cascade, map: "typeId")
   buffTypeId Int
-  Food       Food?    @relation(fields: [foodId], references: [id])
+  Food       Food?    @relation(fields: [foodId], references: [id], onDelete: Cascade, map: "buffId")
   foodId     Int?
 }
 

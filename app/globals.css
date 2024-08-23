@@ -47,9 +47,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --rarity-outline: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-      1px 1px 0 #000;
   }
 
   .dark {
@@ -133,12 +130,3 @@
   color: rgb(255, 186, 24);
   text-shadow: var(--rarity-outline);
 }
-
-/* @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */

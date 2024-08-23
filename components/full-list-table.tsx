@@ -19,11 +19,12 @@ import {
 } from "@/components/ui/select";
 
 import Image from "next/image";
-import { LinkIcon } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
 import { Buff, Food } from "@prisma/client";
 import type { BuffType } from "@/types/food-buffs";
+import { Button } from "./ui/button";
 
 interface TableCaption {
   show: boolean;
@@ -105,10 +106,9 @@ export default function FullListTable({
     <>
       <div className="flex flex-row flex-nowrap items-center justify-center gap-3">
         <div className="flex flex-col flex-nowrap items-center justify-center">
-          <span>Sort by </span>
           <Select onValueChange={(v) => setSortValue(v)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select" />
+              <SelectValue placeholder="Filter by..." />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="desc">A-Z</SelectItem>
@@ -141,8 +141,14 @@ export default function FullListTable({
           {searchArr?.map((f, i) => {
             return (
               <TableRow key={i}>
-                <TableCell className="flex flex-row items-center gap-2">
-                  <Image src={f.icon_url} alt="Icon" width={32} height={32} />
+                <TableCell>
+                  <Image
+                    className="inline mr-2"
+                    src={f.icon_url}
+                    alt="Icon"
+                    width={32}
+                    height={32}
+                  />
                   <span className={`rarity-${f.rarityId}`}>{f.name}</span>
                 </TableCell>
                 <TableCell>+{f.foodValue} Food</TableCell>
@@ -167,16 +173,18 @@ export default function FullListTable({
                     )}
                   </ul>
                 </TableCell>
-                <TableCell>
-                  <a
-                    href={`https://core-keeper.fandom.com/wiki/${f.name
-                      .split(" ")
-                      .join("_")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LinkIcon />
-                  </a>
+                <TableCell className="p-0 text-center">
+                  <Button asChild variant="link" className="p-0">
+                    <a
+                      href={`https://core-keeper.fandom.com/wiki/${f.name
+                        .split(" ")
+                        .join("_")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink />
+                    </a>
+                  </Button>
                 </TableCell>
               </TableRow>
             );
