@@ -36,6 +36,6 @@ next-env.d.ts
 
 .env
 
-/app/api/*/fill-db
+/playground
 
-*.old.*
+/scraping/*-out.json
