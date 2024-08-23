@@ -1,0 +1,737 @@
+[
+  {
+    "name": "Blue Glow"
+  },
+  {
+    "name": "Slowed By Slime"
+  },
+  {
+    "name": "Health Addition"
+  },
+  {
+    "name": "Movement Speed Increase"
+  },
+  {
+    "name": "Heal Over Time"
+  },
+  {
+    "name": "Increased Max Health"
+  },
+  {
+    "name": "Starving Movement Speed Decrease"
+  },
+  {
+    "name": "Hunger Addition"
+  },
+  {
+    "name": "Mining Increase"
+  },
+  {
+    "name": "Melee Damage Increase"
+  },
+  {
+    "name": "Armor Increase"
+  },
+  {
+    "name": "Crit Chance"
+  },
+  {
+    "name": "Chance To Apply Poisoned"
+  },
+  {
+    "name": "Poisoned"
+  },
+  {
+    "name": "Dodge Chance"
+  },
+  {
+    "name": "Increased Max Health Permanent"
+  },
+  {
+    "name": "Acid Damage"
+  },
+  {
+    "name": "Apply Slowed By Slime"
+  },
+  {
+    "name": "Life On Hit"
+  },
+  {
+    "name": "Immune To Slime Slow"
+  },
+  {
+    "name": "Thorns Damage"
+  },
+  {
+    "name": "Range Damage Increase"
+  },
+  {
+    "name": "Extra Harvest Chance"
+  },
+  {
+    "name": "Suffocating"
+  },
+  {
+    "name": "Chance On Hit To Knockback"
+  },
+  {
+    "name": "Apply Snare"
+  },
+  {
+    "name": "Snared"
+  },
+  {
+    "name": "Larva Disguise"
+  },
+  {
+    "name": "Burning"
+  },
+  {
+    "name": "Apply Burning"
+  },
+  {
+    "name": "Chance On Crit To Spawn Thunder Beam"
+  },
+  {
+    "name": "Well Fed Movement Speed Increase"
+  },
+  {
+    "name": "Reduced Damage From Bosses"
+  },
+  {
+    "name": "Immune To Poison"
+  },
+  {
+    "name": "Infected With Mold"
+  },
+  {
+    "name": "Immune To Mold"
+  },
+  {
+    "name": "Immune To Acid"
+  },
+  {
+    "name": "Health Reduction"
+  },
+  {
+    "name": "Movement Speed Decrease"
+  },
+  {
+    "name": "Starving Health Decrease"
+  },
+  {
+    "name": "Well Fed Health Increase"
+  },
+  {
+    "name": "Starving Damage Decrease"
+  },
+  {
+    "name": "Well Fed Damage Increase"
+  },
+  {
+    "name": "Health Addition Percentage"
+  },
+  {
+    "name": "Orange Glow"
+  },
+  {
+    "name": "Increased Fishing"
+  },
+  {
+    "name": "Love"
+  },
+  {
+    "name": "Armor Percentage Increase"
+  },
+  {
+    "name": "Mining Percentage Increase"
+  },
+  {
+    "name": "Mining Speed Increase"
+  },
+  {
+    "name": "Melee Attack Speed Increase"
+  },
+  {
+    "name": "Range Attack Speed Increase"
+  },
+  {
+    "name": "Visible Ore Distance Increase"
+  },
+  {
+    "name": "Percentage Of Mining As Melee"
+  },
+  {
+    "name": "Percentage Of Fishing As Range"
+  },
+  {
+    "name": "Chance For Additional Ore"
+  },
+  {
+    "name": "Increased Explosives Damage"
+  },
+  {
+    "name": "Movement Speed Boost After Mining"
+  },
+  {
+    "name": "Short Movement Speed Boost"
+  },
+  {
+    "name": "Chance For Random Loot From Wall"
+  },
+  {
+    "name": "Slippery Movement"
+  },
+  {
+    "name": "Immune To Slippery Movement"
+  },
+  {
+    "name": "Chance On Hit To Apply Slippery Movement"
+  },
+  {
+    "name": "Slippery Movement From Ground"
+  },
+  {
+    "name": "Kills Increase Crit Chance"
+  },
+  {
+    "name": "Stacked Crit Chance"
+  },
+  {
+    "name": "Drain Less Hunger"
+  },
+  {
+    "name": "Armor Increase From Movement Speed"
+  },
+  {
+    "name": "Snare And Stun Duration Reduction"
+  },
+  {
+    "name": "Gain Dodge Increase While Standing Still"
+  },
+  {
+    "name": "Dodge Increase From Standing Still"
+  },
+  {
+    "name": "Gain Movement Speed From Running Consistently"
+  },
+  {
+    "name": "Movement Speed Increase From Running Consistently"
+  },
+  {
+    "name": "Movement Speed Boost After Dodge"
+  },
+  {
+    "name": "Gain Damage Increase From Running"
+  },
+  {
+    "name": "Damage Increase From Running"
+  },
+  {
+    "name": "Aura Apply Movement Speed Decrease"
+  },
+  {
+    "name": "Aura Movement Speed Decrease"
+  },
+  {
+    "name": "Chance To Gain Extra Cooked Food"
+  },
+  {
+    "name": "Chance For Extra Cooked Food To Be Rare"
+  },
+  {
+    "name": "Immune To Damage After Respawn"
+  },
+  {
+    "name": "Gain Melee Damage From Hitting"
+  },
+  {
+    "name": "Melee Damage Increase From Hitting"
+  },
+  {
+    "name": "Gain Range Damage From Shooting"
+  },
+  {
+    "name": "Range Damage Increase From Shooting"
+  },
+  {
+    "name": "Chance On Hit To Gain Melee Attack Speed"
+  },
+  {
+    "name": "Melee Attack Speed From Chance On Hit"
+  },
+  {
+    "name": "Chance On Shot To Gain Critical Hit Chance"
+  },
+  {
+    "name": "Critical Hit Chance From Shot"
+  },
+  {
+    "name": "Chance On Hit To Increase Range Damage"
+  },
+  {
+    "name": "Increased Range Damage From Melee Hit"
+  },
+  {
+    "name": "Chance On Shot To Increase Melee Damage"
+  },
+  {
+    "name": "Increased Melee Damage From Shot"
+  },
+  {
+    "name": "Gain Melee Damage Increase From Hitting Same Target"
+  },
+  {
+    "name": "Melee Damage Increase From Hitting Same Target"
+  },
+  {
+    "name": "Increased Damage Against Bosses"
+  },
+  {
+    "name": "Chance To Restore Health On Melee Hit"
+  },
+  {
+    "name": "Chance On Range Shot To Apply Slowed By Slime"
+  },
+  {
+    "name": "Critical Damage Percentage Increase"
+  },
+  {
+    "name": "Gain Range Damage Increase From Standing Still"
+  },
+  {
+    "name": "Range Damage Increase From Standing Still"
+  },
+  {
+    "name": "Chance On Range Shot To Stun"
+  },
+  {
+    "name": "Immune To Stun"
+  },
+  {
+    "name": "Stunned"
+  },
+  {
+    "name": "Increased Health Regen Effectiveness"
+  },
+  {
+    "name": "Gain Health Regen While Below Half Health"
+  },
+  {
+    "name": "Health Regen From Being Below Half Health"
+  },
+  {
+    "name": "Cheat Death"
+  },
+  {
+    "name": "Gain Damage Increase At Max Health"
+  },
+  {
+    "name": "Damage Increase At Max Health"
+  },
+  {
+    "name": "Gain Damage Increase At Low Health"
+  },
+  {
+    "name": "Damage Increase At Low Health"
+  },
+  {
+    "name": "Healing Potion Add Heal Over Time"
+  },
+  {
+    "name": "Heal Over Time From Potion"
+  },
+  {
+    "name": "Gain Increased Max Health From All Skill Points"
+  },
+  {
+    "name": "Increased Max Health From All Skill Points"
+  },
+  {
+    "name": "Tool Durability Lasts Longer"
+  },
+  {
+    "name": "Equipment Durability Lasts Longer"
+  },
+  {
+    "name": "Chance To Gain Extra Item From Base Building"
+  },
+  {
+    "name": "Chance To Gain Extra Item From Alchemy"
+  },
+  {
+    "name": "Gain Extra Industry Items"
+  },
+  {
+    "name": "Chance For Polished Jewelry"
+  },
+  {
+    "name": "Reduced Anvil Equipment Costs"
+  },
+  {
+    "name": "Gain Armor At Low Health"
+  },
+  {
+    "name": "Increased Armor From Low Health"
+  },
+  {
+    "name": "Chance To Gain Rare Plant"
+  },
+  {
+    "name": "Seed Drop Chance"
+  },
+  {
+    "name": "Chance To Not Consume Water Can"
+  },
+  {
+    "name": "Gain More Food From Plants"
+  },
+  {
+    "name": "Damage Increase Against Poisoned"
+  },
+  {
+    "name": "Increased Chance To Get Fish"
+  },
+  {
+    "name": "Increased Rod Range"
+  },
+  {
+    "name": "Fish Bites Faster"
+  },
+  {
+    "name": "Gain Increased Boss Damage From Eating Fish"
+  },
+  {
+    "name": "Increased Boss Damage From Eating Fish"
+  },
+  {
+    "name": "Fish Starts Closer To Be Reeled In"
+  },
+  {
+    "name": "Reduced Impact Of Slippery Movement"
+  },
+  {
+    "name": "Longer Cooked Food Buffs"
+  },
+  {
+    "name": "Well Fed Buffs Threshold Reduction"
+  },
+  {
+    "name": "Stronger Well Fed Buffs"
+  },
+  {
+    "name": "Gain Melee Attack Speed From Cooked Food"
+  },
+  {
+    "name": "Melee Attack Speed From Cooked Food"
+  },
+  {
+    "name": "Gain More Food From Cooked Food"
+  },
+  {
+    "name": "Aura Apply Damage Increase"
+  },
+  {
+    "name": "Aura Damage Increase"
+  },
+  {
+    "name": "Aura Apply Healing Over Time"
+  },
+  {
+    "name": "Aura Healing Over Time"
+  },
+  {
+    "name": "Critical Damage Percentage Increase From Gardening"
+  },
+  {
+    "name": "Critical Damage Percentage Increase From Range"
+  },
+  {
+    "name": "All Damage Increase"
+  },
+  {
+    "name": "Gain Damage Increase After Mining"
+  },
+  {
+    "name": "Damage Increase After Mining"
+  },
+  {
+    "name": "Gain Critical Hit Chance From Standing Still"
+  },
+  {
+    "name": "Critical Hit Chance From Standing Still"
+  },
+  {
+    "name": "Chance On Hit To Kill Target With Lower Health"
+  },
+  {
+    "name": "Chance To Apply Poison On Block"
+  },
+  {
+    "name": "Increase Crit Chance After Poison Apply"
+  },
+  {
+    "name": "Crit Chance Increase From Poison Apply"
+  },
+  {
+    "name": "Immune To Burning"
+  },
+  {
+    "name": "Aura Apply Damage Decrease"
+  },
+  {
+    "name": "Aura Damage Decrease"
+  },
+  {
+    "name": "All Damage Decrease"
+  },
+  {
+    "name": "Aura Apply Burning"
+  },
+  {
+    "name": "Aura Burning"
+  },
+  {
+    "name": "Remove Poison"
+  },
+  {
+    "name": "Melee Damage Increase From Potion"
+  },
+  {
+    "name": "Range Damage Increase From Potion"
+  },
+  {
+    "name": "Reduced Damage From Bosses From Potion"
+  },
+  {
+    "name": "Armor Increase From Potion"
+  },
+  {
+    "name": "Apply Movement Speed Reduction"
+  },
+  {
+    "name": "Gain Attack Speed From Missing Health"
+  },
+  {
+    "name": "Attack Speed From Missing Health"
+  },
+  {
+    "name": "Attack Speed"
+  },
+  {
+    "name": "Digging Increase"
+  },
+  {
+    "name": "Chance On Kill To Summon Ghost"
+  },
+  {
+    "name": "Increased Chance To Get Fish Loot"
+  },
+  {
+    "name": "Chance On Range Hit To Spawn Octopus Boss Projectile"
+  },
+  {
+    "name": "Chance To Get Double Fish"
+  },
+  {
+    "name": "Movement Speed Increase From Potion"
+  },
+  {
+    "name": "Increased Chance For Higher Rarity Fish"
+  },
+  {
+    "name": "Increased Pick Up Radius"
+  },
+  {
+    "name": "Increased Boat Speed"
+  },
+  {
+    "name": "Apply Slippery Movement When Hit"
+  },
+  {
+    "name": "Chance To Shoot Shock Wave On Block"
+  },
+  {
+    "name": "Increased Armor Percentage While Adjacent To Water"
+  },
+  {
+    "name": "Increased Armor Percentage From Adjacent Water"
+  },
+  {
+    "name": "Immune To Damage After Login"
+  },
+  {
+    "name": "King Of Slimes"
+  },
+  {
+    "name": "Red Glowing Eyes"
+  },
+  {
+    "name": "Look Like Ghost"
+  },
+  {
+    "name": "Attack Speed Boost After Dodge"
+  },
+  {
+    "name": "Deal Aoe Fire Damage On Block"
+  },
+  {
+    "name": "Chance For Ore On Mining Wall"
+  },
+  {
+    "name": "Damage Increase Against Burning"
+  },
+  {
+    "name": "Crit Damage Increase Against Burning"
+  },
+  {
+    "name": "Thorns Damage Added To Melee And Range"
+  },
+  {
+    "name": "Chance On Hit To Spawn Scarab Boss Projectile"
+  },
+  {
+    "name": "Gain Attack Speed Boost After Dodge"
+  },
+  {
+    "name": "Giant Mushroom Buff"
+  },
+  {
+    "name": "Amber Larva Buff"
+  },
+  {
+    "name": "Starlight Nautilus Buff"
+  },
+  {
+    "name": "Additional Chance On Crit To Spawn Thunder Beam"
+  },
+  {
+    "name": "Additional Chance On Hit To Spawn Scarab Boss Projectile"
+  },
+  {
+    "name": "Additional Chance On Range Hit To Spawn Octopus Boss Projectile"
+  },
+  {
+    "name": "Increased Dash Duration"
+  },
+  {
+    "name": "Aura Apply Radioactive Damage Over Time"
+  },
+  {
+    "name": "Aura Radioactive Damage Over Time"
+  },
+  {
+    "name": "Snowing"
+  },
+  {
+    "name": "Attack Speed Increase From Potion"
+  },
+  {
+    "name": "Sleeping"
+  },
+  {
+    "name": "Heal Over Time Percentage"
+  },
+  {
+    "name": "Golden Chocolate Buff"
+  },
+  {
+    "name": "Immune To Charm"
+  },
+  {
+    "name": "Chance To Apply Charmed"
+  },
+  {
+    "name": "Charmed"
+  },
+  {
+    "name": "Increased Charm Duration"
+  },
+  {
+    "name": "Pink Glow"
+  },
+  {
+    "name": "Anniversary Cake Buff"
+  },
+  {
+    "name": "Chance On Melee Hit To Stun"
+  },
+  {
+    "name": "Increased Applied Stun Duration"
+  },
+  {
+    "name": "Damage Increase Against Stunned"
+  },
+  {
+    "name": "Chance To Deal Triple Damage"
+  },
+  {
+    "name": "Increased Damage Based On Target Remaining Health"
+  },
+  {
+    "name": "Chance To Consume Burning"
+  },
+  {
+    "name": "Piercing Projectiles"
+  },
+  {
+    "name": "God Mode"
+  },
+  {
+    "name": "Reduced Impact Of Slowed By Slime"
+  },
+  {
+    "name": "Pet Melee Damage Increase"
+  },
+  {
+    "name": "Pet Melee Attack Speed Increase"
+  },
+  {
+    "name": "Pet Range Damage Increase"
+  },
+  {
+    "name": "Pet Range Attack Speed Increase"
+  },
+  {
+    "name": "Pet Crit Damage Increase"
+  },
+  {
+    "name": "Pet Crit Chance Increase"
+  },
+  {
+    "name": "Pet Buffs Increase"
+  },
+  {
+    "name": "Apply Pet Damage Increase"
+  },
+  {
+    "name": "Apply Pet Crit Damage Increase"
+  },
+  {
+    "name": "Apply Pet Crit Chance Increase"
+  },
+  {
+    "name": "Apply Pet Attack Speed Increase"
+  },
+  {
+    "name": "Apply Pet Buffs Increase"
+  },
+  {
+    "name": "Gain Increased Max Health From Pet"
+  },
+  {
+    "name": "Increased Max Health From Pet"
+  },
+  {
+    "name": "Atlantian Worm Heart Buff"
+  },
+  {
+    "name": "Immune To Radioactive Damage"
+  },
+  {
+    "name": "Increased Damage Taken Percentage"
+  },
+  {
+    "name": "Reduced Damage Taken Percentage"
+  }
+]
