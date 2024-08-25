@@ -22,7 +22,11 @@ function parseCookbook() {
   });
 
   try {
-    fs.writeFileSync("./cookbook-out.json", JSON.stringify(arr), "utf-8");
+    fs.writeFileSync(
+      "./scraping/cookbook-out.json",
+      JSON.stringify(arr),
+      "utf-8"
+    );
   } catch (err) {
     console.error(err);
     throw new Error("Error parsing Cookboon.json");
@@ -40,7 +44,7 @@ function parseBuffs() {
   });
 
   try {
-    fs.writeFileSync("./buffs-out.json", JSON.stringify(arr), "utf-8");
+    fs.writeFileSync("./scraping/buffs-out.json", JSON.stringify(arr), "utf-8");
   } catch (err) {
     console.error(err);
     throw new Error("Error parsing Cookboon.json");

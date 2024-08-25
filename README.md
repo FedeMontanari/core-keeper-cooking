@@ -44,6 +44,12 @@ After installing the dependencies you can run the following command to populate 
 I aim to get a scraping/parsing script to get more accurate and up to date data using [RussDev's CoreKeepersWorkshop](https://github.com/RussDev7/CoreKeepersWorkshop) JSON output files.
 Currently there's a parsing script in `/scraping/index.ts` but it needs more work, such as online scraping to avoid handling files and integration with the DB seed script.
 
+To run these files you can run the following command
+
+`pnpm scrape`
+
+Two files will be created under the scraping directory.
+
 ### Running Locally
 
 Once dependencies are installed and Database has some data you can run the dev command to get a development enviroment running.
