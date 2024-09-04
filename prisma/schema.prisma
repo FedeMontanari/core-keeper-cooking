@@ -5,6 +5,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator zod {
+  provider                  = "npx zod-prisma-types"
+  output                    = "./zod"
+  writeBarrelFiles          = "false"
+  useMultipleFiles          = "true"
+  createInputTypes          = "false"
+  createPartialTypes        = "true"
+  createRelationValuesTypes = "true"
+  writeNullishInModelTypes  = "true"
+  useTypeAssertions         = "true"
+}
+
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL")
@@ -12,41 +24,46 @@ datasource db {
 }
 
 model Food {
-  id        Int      @id @default(autoincrement())
-  name      String
-  slug      String
-  foodValue Int
-  hps       Float
-  icon_url  String
-  hpBoost   Int?
-  variation Int?
-  ingameId  Int
-  buffs     Buff[]
-  rarity    Rarity   @relation(fields: [rarityId], references: [id], onDelete: Cascade, map: "rarityId")
-  createdAt DateTime @default(now())
-  rarityId  Int
+  id         Int      @id @default(autoincrement())
+  name       String
+  slug       String
+  food_alue  Int
+  icon_url   String
+  variation  Int?
+  ingame_id  Int
+  buffs      Buff[]
+  rarity     Rarity   @relation(fields: [rarity_id], references: [id], onDelete: Cascade, map: "rarityId")
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  rarity_id  Int
 }
 
 model Rarity {
-  id   Int    @id
-  slug String
-  name String
-  Food Food[]
+  id         Int      @id
+  name       String
+  slug       String
+  Food       Food[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Buff {
-  id         Int      @id @default(autoincrement())
-  value      Float
-  duration   Int
-  type       BuffType @relation(fields: [buffTypeId], references: [id], onDelete: Cascade, map: "typeId")
-  buffTypeId Int
-  Food       Food?    @relation(fields: [foodId], references: [id], onDelete: Cascade, map: "buffId")
-  foodId     Int?
+  id           Int      @id @default(autoincrement())
+  value        Float
+  duration     Int
+  type         BuffType @relation(fields: [buff_type_id], references: [id], onDelete: Cascade, map: "typeId")
+  buff_type_id Int
+  Food         Food     @relation(fields: [food_id], references: [id], onDelete: Cascade, map: "buffId")
+  food_id      Int
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 }
 
 model BuffType {
-  id   Int    @id @default(autoincrement())
-  name String
-  slug String
-  buff Buff[]
+  id         Int      @id @default(autoincrement())
+  name       String
+  slug       String
+  buff       Buff[]
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }

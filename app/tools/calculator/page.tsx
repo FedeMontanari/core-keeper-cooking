@@ -1,21 +1,19 @@
 import ToolHeader from "@/components/tool-header";
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-  SelectItem,
-} from "@/components/ui/select";
-import { Skeleton } from "@/components/ui/skeleton";
 import { prisma } from "@/lib/prisma";
-import Image from "next/image";
 import { env } from "process";
 import React from "react";
+import IngredientsForm from "./_components/ingredients-form";
+
+const ENV = env.NODE_ENV;
 
 const fetchData = async () => {
   const fullList = await prisma.food.findMany({
     include: {
-      buffs: true,
+      buffs: {
+        include: {
+          type: true,
+        },
+      },
     },
   });
   const buffTypes = await prisma.buffType.findMany();
@@ -24,8 +22,6 @@ const fetchData = async () => {
     buffTypes,
   };
 };
-
-const ENV = env.NODE_ENV;
 
 export default async function Calculator() {
   const { fullList, buffTypes } = await fetchData();
@@ -42,7 +38,7 @@ export default async function Calculator() {
       </main>
     );
   }
-  
+
   return (
     <main className="w-full h-full flex items-center justify-start flex-col gap-5">
       <ToolHeader toolName="Calculator" />
@@ -53,66 +49,9 @@ export default async function Calculator() {
             Select two ingredients from the dropdown list and get the finished
             dish stat values!
           </p>
-          {fullList.length > 0 ? (
-            <>
-              <div className="pb-3">
-                <Select>
-                  <SelectTrigger className="w-[250px] h-fit">
-                    <SelectValue placeholder="Ingredient 1" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {fullList.map((food, i) => {
-                      return (
-                        <SelectItem value={food.slug} key={food.id}>
-                          <Image
-                            src={food.icon_url}
-                            alt="Ingredient Icon"
-                            width={32}
-                            height={32}
-                            className="inline"
-                          />
-                          <span className={`rarity-${food.rarityId}`}>
-                            {food.name}
-                          </span>
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
-              </div>
-              <Select>
-                <SelectTrigger className="w-[250px] h-fit">
-                  <SelectValue placeholder="Ingredient 2" />
-                </SelectTrigger>
-                <SelectContent>
-                  {fullList.map((food, i) => {
-                    return (
-                      <SelectItem value={food.slug} key={food.id}>
-                        <Image
-                          src={food.icon_url}
-                          alt="Ingredient Icon"
-                          width={32}
-                          height={32}
-                          className="inline"
-                        />
-                        <span className={`rarity-${food.rarityId}`}>
-                          {food.name}
-                        </span>
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
-            </>
-          ) : (
-            <>
-              <Skeleton className="h-12 w-52 rounded-md" />
-              <Skeleton className="h-12 w-52 rounded-md" />
-            </>
-          )}
+          <IngredientsForm ingredients={fullList} />
         </div>
       </section>
-      <section className="w-11/12 h-fit pb-5 infocard-fancy"></section>
     </main>
   );
 }
