@@ -10,8 +10,10 @@ import { FoodPartialWithRelationsSchema } from './FoodSchema'
 
 export const RaritySchema = z.object({
   id: z.number().int(),
-  slug: z.string(),
   name: z.string(),
+  slug: z.string(),
+  created_at: z.coerce.date(),
+  updated_at: z.coerce.date(),
 })
 
 export type Rarity = z.infer<typeof RaritySchema>
@@ -29,13 +31,13 @@ export type RarityPartial = z.infer<typeof RarityPartialSchema>
 /////////////////////////////////////////
 
 export type RarityRelations = {
-  Food: FoodWithRelations[];
+  food: FoodWithRelations[];
 };
 
 export type RarityWithRelations = z.infer<typeof RaritySchema> & RarityRelations
 
 export const RarityWithRelationsSchema: z.ZodType<RarityWithRelations> = RaritySchema.merge(z.object({
-  Food: z.lazy(() => FoodWithRelationsSchema).array(),
+  food: z.lazy(() => FoodWithRelationsSchema).array(),
 }))
 
 /////////////////////////////////////////
@@ -43,19 +45,19 @@ export const RarityWithRelationsSchema: z.ZodType<RarityWithRelations> = RarityS
 /////////////////////////////////////////
 
 export type RarityPartialRelations = {
-  Food?: FoodPartialWithRelations[];
+  food?: FoodPartialWithRelations[];
 };
 
 export type RarityPartialWithRelations = z.infer<typeof RarityPartialSchema> & RarityPartialRelations
 
 export const RarityPartialWithRelationsSchema: z.ZodType<RarityPartialWithRelations> = RarityPartialSchema.merge(z.object({
-  Food: z.lazy(() => FoodPartialWithRelationsSchema).array(),
+  food: z.lazy(() => FoodPartialWithRelationsSchema).array(),
 })).partial()
 
 export type RarityWithPartialRelations = z.infer<typeof RaritySchema> & RarityPartialRelations
 
 export const RarityWithPartialRelationsSchema: z.ZodType<RarityWithPartialRelations> = RaritySchema.merge(z.object({
-  Food: z.lazy(() => FoodPartialWithRelationsSchema).array(),
+  food: z.lazy(() => FoodPartialWithRelationsSchema).array(),
 }).partial())
 
 export default RaritySchema;

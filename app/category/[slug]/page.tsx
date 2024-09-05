@@ -1,5 +1,6 @@
 import CategoryHeader from "@/components/category-header";
 import CategoryTable from "@/components/category-table";
+import ScrollUpButton from "@/components/scroll-up";
 import { foods } from "@/constants/food";
 
 type FoodCategoryKey = keyof typeof foods;
@@ -17,6 +18,7 @@ export default function CategoryFoodPage({
       <section className="infocard-fancy mt-24">
         <CategoryTable category={foods[params.slug]} searchbar={true} />
       </section>
+      <ScrollUpButton />
     </main>
   );
 }

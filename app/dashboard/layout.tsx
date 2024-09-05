@@ -1,14 +1,21 @@
-import TopNav from "./_components/topnav";
+import React from "react";
+import TopNav from "./_components/top-nav";
 
 export default function DashboardLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
-    <div className="font-sans">
+    <div>
       <TopNav />
-      <main>{children}</main>
+      <main>
+        {children}
+        {modal}
+      </main>
+      <div id="modal-root" />
     </div>
   );
 }

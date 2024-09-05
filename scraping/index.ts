@@ -1,6 +1,6 @@
-import fs from "node:fs";
-import Cookbook from "./Cookbook.json";
-import Buffs from "./BuffIDs.json";
+const fs = require("node:fs");
+const Cookbook: CookbookType[] = require("./Cookbook.json");
+const Buffs: BuffType[] = require("./BuffIDs.json");
 
 type CookbookType = {
   name: string;

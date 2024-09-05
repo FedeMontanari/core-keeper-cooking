@@ -24,8 +24,8 @@ const data = [
     slug: "move_speed",
   },
   {
-    name: "Max Health",
-    slug: "max_hp",
+    name: "Max Health(only once)",
+    slug: "max_hp_perma",
   },
   {
     name: "Armor",
@@ -106,6 +106,14 @@ const data = [
   {
     name: "More Healing from Health Over Time Regeneration",
     slug: "plus_hots",
+  },
+  {
+    name: "Health per Second",
+    slug: "health_per_second",
+  },
+  {
+    name: "Max Health",
+    slug: "max_hp",
   },
 ];
 

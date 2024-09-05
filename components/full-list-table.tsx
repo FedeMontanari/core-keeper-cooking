@@ -80,11 +80,11 @@ export default function FullListTable({
       break;
 
     case "rarity-asc":
-      list.sort((a, b) => a.rarityId - b.rarityId);
+      list.sort((a, b) => a.rarity_id - b.rarity_id);
       break;
 
     case "rarity-desc":
-      list.sort((a, b) => b.rarityId - a.rarityId);
+      list.sort((a, b) => b.rarity_id - a.rarity_id);
       break;
 
     default:
@@ -149,15 +149,14 @@ export default function FullListTable({
                     width={32}
                     height={32}
                   />
-                  <span className={`rarity-${f.rarityId}`}>{f.name}</span>
+                  <span className={`rarity-${f.rarity_id}`}>{f.name}</span>
                 </TableCell>
-                <TableCell>+{f.foodValue} Food</TableCell>
+                <TableCell>+{f.food_value} Food</TableCell>
                 <TableCell>
                   <ul>
-                    {f.hps ? <li>+{f.hps} Health Per Second</li> : <></>}
                     {f.buffs?.map((b) => {
                       const buffType = buffTypes?.find(
-                        (bt) => bt.id === b.buffTypeId
+                        (bt) => bt.id === b.buff_type_id
                       );
                       const value = b.value ? `+${b.value} ` : "";
                       return (
@@ -166,11 +165,6 @@ export default function FullListTable({
                         </li>
                       );
                     })}
-                    {f.hpBoost ? (
-                      <li>+{f.hpBoost} Permanent Max Health (Only Once)</li>
-                    ) : (
-                      <></>
-                    )}
                   </ul>
                 </TableCell>
                 <TableCell className="p-0 text-center">

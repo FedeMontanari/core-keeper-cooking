@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "db:seed": "prisma db seed",
-    "scrape": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' ./scraping/index.ts"
+    "scrape": "ts-node ./scraping/index.ts"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} ./prisma/seed/index.ts"
@@ -17,6 +17,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@prisma/client": "^5.6.0",
     "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.0.0",

@@ -27,7 +27,7 @@ model Food {
   id         Int      @id @default(autoincrement())
   name       String
   slug       String
-  food_alue  Int
+  food_value Int
   icon_url   String
   variation  Int?
   ingame_id  Int
@@ -42,7 +42,7 @@ model Rarity {
   id         Int      @id
   name       String
   slug       String
-  Food       Food[]
+  food       Food[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }

@@ -32,7 +32,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Image from "next/image";
-import { BuffWithPartialRelations } from "@/prisma/zod/modelSchema/BuffSchema";
+import {
+  BuffPartialWithRelations,
+  BuffWithPartialRelations,
+} from "@/prisma/zod/modelSchema/BuffSchema";
 
 const formSchema = z.object({
   ingOne: FoodWithPartialRelationsSchema,
@@ -57,7 +60,7 @@ export default function IngredientsForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    console.log(calculateFood(values));
   }
 
   function getMaxValue(
@@ -73,41 +76,47 @@ export default function IngredientsForm({
     console.log("Ingredient One: ", ingOne);
     console.log("Ingredient Two: ", ingTwo);
     const finalFood: FoodPartialWithRelations = {
-      foodValue: getMaxValue(ingOne.foodValue, ingTwo.foodValue),
-      hpBoost: getMaxValue(ingOne.hpBoost, ingTwo.hpBoost),
-      hps: getMaxValue(ingOne.hps, ingTwo.hps),
+      food_value: getMaxValue(ingOne.food_value, ingTwo.food_value),
       buffs: mergeBuffs(ingOne.buffs, ingTwo.buffs),
     };
     return finalFood;
   }
 
   function mergeBuffs(
-    buffsOne: BuffWithPartialRelations[] | undefined,
-    buffsTwo: BuffWithPartialRelations[] | undefined
+    buffsOne?: BuffPartialWithRelations[] | undefined,
+    buffsTwo?: BuffPartialWithRelations[] | undefined
   ) {
+    if (!buffsOne || !buffsTwo) return;
+
     const buffMap = new Map();
 
     if (buffsOne) {
       // Add buffs from the first ingredient
       for (const buff of buffsOne) {
-        const { buffTypeId, value } = buff;
-        buffMap.set(buffTypeId, getMaxValue(buffMap.get(buffTypeId), value));
+        const { buff_type_id, value } = buff;
+        buffMap.set(
+          buff_type_id,
+          getMaxValue(buffMap.get(buff_type_id), value)
+        );
       }
     }
 
     if (buffsTwo) {
       // Add buffs from the second ingredient
       for (const buff of buffsTwo) {
-        const { buffTypeId, value } = buff;
-        buffMap.set(buffTypeId, getMaxValue(buffMap.get(buffTypeId), value));
+        const { buff_type_id, value } = buff;
+        buffMap.set(
+          buff_type_id,
+          getMaxValue(buffMap.get(buff_type_id), value)
+        );
       }
     }
 
     // Convert map back to array format
-    const mergedBuffs: BuffWithPartialRelations[] = [];
-    buffMap.forEach((maxValue, buffTypeId) => {
+    const mergedBuffs: BuffPartialWithRelations[] = [];
+    buffMap.forEach((maxValue, buff_type_id) => {
       const buffTemplate = [...buffsOne, ...buffsTwo].find(
-        (buff) => buff.buffTypeId === buffTypeId
+        (buff) => buff.buff_type_id === buff_type_id
       );
 
       if (buffTemplate) {

@@ -16,8 +16,10 @@ export const BuffSchema = z.object({
   id: z.number().int(),
   value: z.number(),
   duration: z.number().int(),
-  buffTypeId: z.number().int(),
-  foodId: z.number().int().nullish(),
+  buff_type_id: z.number().int(),
+  food_id: z.number().int(),
+  created_at: z.coerce.date(),
+  updated_at: z.coerce.date(),
 })
 
 export type Buff = z.infer<typeof BuffSchema>
@@ -36,14 +38,14 @@ export type BuffPartial = z.infer<typeof BuffPartialSchema>
 
 export type BuffRelations = {
   type: BuffTypeWithRelations;
-  Food?: FoodWithRelations | null;
+  Food: FoodWithRelations;
 };
 
 export type BuffWithRelations = z.infer<typeof BuffSchema> & BuffRelations
 
 export const BuffWithRelationsSchema: z.ZodType<BuffWithRelations> = BuffSchema.merge(z.object({
   type: z.lazy(() => BuffTypeWithRelationsSchema),
-  Food: z.lazy(() => FoodWithRelationsSchema).nullish(),
+  Food: z.lazy(() => FoodWithRelationsSchema),
 }))
 
 /////////////////////////////////////////
@@ -52,21 +54,21 @@ export const BuffWithRelationsSchema: z.ZodType<BuffWithRelations> = BuffSchema.
 
 export type BuffPartialRelations = {
   type?: BuffTypePartialWithRelations;
-  Food?: FoodPartialWithRelations | null;
+  Food?: FoodPartialWithRelations;
 };
 
 export type BuffPartialWithRelations = z.infer<typeof BuffPartialSchema> & BuffPartialRelations
 
 export const BuffPartialWithRelationsSchema: z.ZodType<BuffPartialWithRelations> = BuffPartialSchema.merge(z.object({
   type: z.lazy(() => BuffTypePartialWithRelationsSchema),
-  Food: z.lazy(() => FoodPartialWithRelationsSchema).nullish(),
+  Food: z.lazy(() => FoodPartialWithRelationsSchema),
 })).partial()
 
 export type BuffWithPartialRelations = z.infer<typeof BuffSchema> & BuffPartialRelations
 
 export const BuffWithPartialRelationsSchema: z.ZodType<BuffWithPartialRelations> = BuffSchema.merge(z.object({
   type: z.lazy(() => BuffTypePartialWithRelationsSchema),
-  Food: z.lazy(() => FoodPartialWithRelationsSchema).nullish(),
+  Food: z.lazy(() => FoodPartialWithRelationsSchema),
 }).partial())
 
 export default BuffSchema;

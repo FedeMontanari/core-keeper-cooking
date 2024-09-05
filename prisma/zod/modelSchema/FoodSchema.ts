@@ -16,14 +16,13 @@ export const FoodSchema = z.object({
   id: z.number().int(),
   name: z.string(),
   slug: z.string(),
-  foodValue: z.number().int(),
-  hps: z.number(),
+  food_value: z.number().int(),
   icon_url: z.string(),
-  hpBoost: z.number().int().nullish(),
   variation: z.number().int().nullish(),
-  ingameId: z.number().int(),
-  createdAt: z.coerce.date(),
-  rarityId: z.number().int(),
+  ingame_id: z.number().int(),
+  created_at: z.coerce.date(),
+  updated_at: z.coerce.date(),
+  rarity_id: z.number().int(),
 })
 
 export type Food = z.infer<typeof FoodSchema>

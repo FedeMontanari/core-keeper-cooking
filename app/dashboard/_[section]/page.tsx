@@ -1,14 +1,14 @@
 import React from "react";
-import FoodDashbaord from "../_components/FoodDashbaord";
-import BuffDashboard from "../_components/BuffDashboard";
-import RarityDashboard from "../_components/RarityDashboard";
+import FoodDashbaord from "../_components/food-dashboard";
+import BuffDashboard from "../_components/buff-dashboard";
+import RarityDashboard from "../_components/rarity-dashboard";
 
 export default function DashboardSectionPage({
   params,
 }: {
-  params: { id: "food" | "buff" | "rarity" };
+  params: { section: "food" | "buff" | "rarity" };
 }) {
-  switch (params.id) {
+  switch (params.section) {
     case "buff":
       return <BuffDashboard />;
 
