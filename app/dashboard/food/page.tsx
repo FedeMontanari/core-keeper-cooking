@@ -1,5 +1,7 @@
-import FoodDashboard from "../_components/food-dashboard";
+import { prisma } from "@/lib/prisma";
+import DashboardTable from "../_components/dashboard-table";
 
-export default function FoodDashboardPage() {
-  return <FoodDashboard />;
+export default async function FoodDashboardPage() {
+  const data = await prisma.food.findMany();
+  return <DashboardTable data={data} name="Food" />;
 }

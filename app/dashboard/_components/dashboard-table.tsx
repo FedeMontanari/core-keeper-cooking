@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,17 +16,39 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { prisma } from "@/lib/prisma";
+import { BuffType } from "@/prisma/zod/modelSchema/BuffTypeSchema";
+import { Food } from "@/prisma/zod/modelSchema/FoodSchema";
+import { Rarity } from "@/prisma/zod/modelSchema/RaritySchema";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
-export default async function FoodDashboard() {
-  const values = await prisma.food.findMany();
+export default function DashboardTable({
+  data,
+  name,
+}: {
+  data: Food[] | BuffType[] | Rarity[];
+  name: "Food" | "Buffs" | "Rarity";
+}) {
+  let title = "Title";
+  switch (name) {
+    case "Buffs":
+      title = "Buff Types";
+      break;
+    case "Food":
+      title = "Food Items";
+      break;
+
+    case "Rarity":
+      title = "Rarity Values";
+      break;
+
+    default:
+      break;
+  }
   return (
     <section className="flex flex-col items-center justify-center pb-8">
-      <h3 className="text-xl font-bold py-5">Food Items</h3>
-      <Table className="w-3/4 border rounded-lg mx-auto bg-black">
+      <h3 className="text-xl font-bold py-5">{title}</h3>
+      <Table className="w-3/4 border rounded-lg mx-auto">
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
@@ -34,8 +58,8 @@ export default async function FoodDashboard() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {values.map((v, i) => (
-            <TableRow key={i}>
+          {data.map((v) => (
+            <TableRow key={v.id}>
               <TableCell>{v.id}</TableCell>
               <TableCell>{v.slug}</TableCell>
               <TableCell>{v.name}</TableCell>
@@ -50,7 +74,9 @@ export default async function FoodDashboard() {
                   <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuItem asChild>
-                      <Link href={`/dashboard/food/${v.id}`}>Edit</Link>
+                      <Link href={`/dashboard/${name.toLowerCase()}/${v.id}`}>
+                        Edit
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem className="text-destructive">
                       Delete
