@@ -1,4 +1,3 @@
-import React from "react";
 import TopNav from "./_components/top-nav";
 
 export default function DashboardLayout({
