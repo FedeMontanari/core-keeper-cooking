@@ -130,3 +130,8 @@
   color: rgb(255, 186, 24);
   text-shadow: var(--rarity-outline);
 }
+
+dialog:modal {
+  max-width: 100vw;
+  max-height: 100vh;
+}

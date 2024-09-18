@@ -99,7 +99,7 @@ export default function CategoryTable({
         <div className="flex flex-col flex-nowrap items-center justify-center">
           <Select onValueChange={(v) => setSortValue(v)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by..." />
+              <SelectValue placeholder="Order by..." />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="desc">A-Z</SelectItem>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -8,6 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -21,6 +22,7 @@ import { Food } from "@/prisma/zod/modelSchema/FoodSchema";
 import { Rarity } from "@/prisma/zod/modelSchema/RaritySchema";
 import { MoreHorizontal } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function DashboardTable({
   data,
@@ -29,6 +31,9 @@ export default function DashboardTable({
   data: Food[] | BuffType[] | Rarity[];
   name: "Food" | "Buffs" | "Rarity";
 }) {
+  const [searchArr, setSearchArr] = useState<Food[] | BuffType[] | Rarity[]>(
+    data
+  );
   let title = "Title";
   switch (name) {
     case "Buffs":
@@ -45,10 +50,29 @@ export default function DashboardTable({
     default:
       break;
   }
+
+  function searchBarChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.value) {
+      setSearchArr(data);
+    }
+    setSearchArr(
+      data.filter((item) =>
+        item.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    );
+  }
+
   return (
     <section className="flex flex-col items-center justify-center pb-8">
       <h3 className="text-xl font-bold py-5">{title}</h3>
-      <Table className="w-3/4 border rounded-lg mx-auto">
+      <div className="infocard-fancy w-3/4">
+      <Input
+        onChange={searchBarChange}
+        type="text"
+        placeholder="Search by Name..."
+        className="w-[300px]"
+      />
+      <Table>
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
@@ -58,7 +82,7 @@ export default function DashboardTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((v) => (
+          {searchArr.map((v) => (
             <TableRow key={v.id}>
               <TableCell>{v.id}</TableCell>
               <TableCell>{v.slug}</TableCell>
@@ -88,6 +112,7 @@ export default function DashboardTable({
           ))}
         </TableBody>
       </Table>
+      </div>
     </section>
   );
 }

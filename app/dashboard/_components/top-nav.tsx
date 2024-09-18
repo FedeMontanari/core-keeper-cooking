@@ -18,7 +18,7 @@ const links = [
 
 export default function TopNav() {
   return (
-    <nav className="w-full flex items-center justify-between px-5 bg-secondary">
+    <nav className="w-full flex items-center justify-between px-5 bg-primary-foreground border-b">
       <Button asChild variant="link">
         <Link href="/">Home</Link>
       </Button>
