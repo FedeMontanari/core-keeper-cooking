@@ -57,7 +57,8 @@ Once dependencies are installed and Database has some data you can run the dev c
 `pnpm dev`
 
 ## To-Do:
-
 - [ ] Calculator feature.
 - [ ] Make public API.
 - [ ] Potions support?
+
+## Contributing
