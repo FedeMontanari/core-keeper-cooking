@@ -32,17 +32,7 @@ model Food {
   variation  Int?
   ingame_id  Int
   buffs      Buff[]
-  rarity     Rarity   @relation(fields: [rarity_id], references: [id], onDelete: Cascade, map: "rarityId")
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  rarity_id  Int
-}
-
-model Rarity {
-  id         Int      @id
-  name       String
-  slug       String
-  food       Food[]
+  rarity     Rarity   @default(Poor)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
@@ -66,4 +56,13 @@ model BuffType {
   buff       Buff[]
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+enum Rarity {
+  Poor
+  Common
+  Uncommon
+  Rare
+  Epic
+  Legendary
 }
