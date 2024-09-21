@@ -12,6 +12,7 @@
 - NextJS
 - Prisma
 - Typescript
+- Shadcn.UI
 
 ## Setting Up The Project
 
@@ -29,26 +30,26 @@ Make sure your `.env` file follows the naming from `.env.example`. If you run wi
 ```
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
+  url       = env("POSTGRES_PRISMA_URL") // Change these accordingly as you need.
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 ```
 
-This project includes a seeding script for a basic (and outdated) dataset.
+This project includes a seeding script for a basic (and probably outdated) dataset.
 After installing the dependencies you can run the following command to populate the DB
 
 `pnpm db:seed`
 
 ### Scraping
 
-I aim to get a scraping/parsing script to get more accurate and up to date data using [RussDev's CoreKeepersWorkshop](https://github.com/RussDev7/CoreKeepersWorkshop) JSON output files.
+I aim to get a scraping/parsing script to get more accurate and up to date data using [Cysidus' Wiki](https://corekeeper.atma.gg/en/Core_Keeper_Wiki).
 Currently there's a parsing script in `/scraping/index.ts` but it needs more work, such as online scraping to avoid handling files and integration with the DB seed script.
 
 To run these files you can run the following command
 
 `pnpm scrape`
 
-Two files will be created under the scraping directory.
+Multiple files should be created under the same directory (`/scraping/`) named `*dataType*-out.json`. You can use these files to seed the Database.
 
 ### Running Locally
 
@@ -57,8 +58,10 @@ Once dependencies are installed and Database has some data you can run the dev c
 `pnpm dev`
 
 ## To-Do:
+
 - [ ] Calculator feature.
 - [ ] Make public API.
-- [ ] Potions support?
+- [ ] Potions?
+- [ ] Integrate seed and scrape scripts together.
 
 ## Contributing

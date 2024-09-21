@@ -12,6 +12,7 @@ export const BuffTypeSchema = z.object({
   id: z.number().int(),
   name: z.string(),
   slug: z.string(),
+  is_percent: z.boolean(),
   created_at: z.coerce.date(),
   updated_at: z.coerce.date(),
 })

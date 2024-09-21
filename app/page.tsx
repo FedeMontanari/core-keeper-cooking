@@ -83,8 +83,11 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-row w-11/12 h-fit flex-nowrap gap-3">
-          <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center">
+          <div className="infocard w-11/12 h-fit flex flex-col items-center justify-center relative">
             <h3 className="text-2xl">Tools</h3>
+            <div className="absolute -inset-5 bg-black/90 flex items-center justify-center text-center rounded">
+              <p>Under development, come back soon!</p>
+            </div>
             <ul className="flex flex-row items-center justify-evenly mt-5 w-full h-fit flex-wrap">
               {tools.map((c, i) => {
                 return (
@@ -118,17 +121,17 @@ export default function Home() {
                     key={i}
                     className="flex flex-col items-center text-center"
                   >
-                    <Link
+                    <Image
+                      src={c.icon_url}
+                      alt="Category Icon"
+                      width={64}
+                      height={64}
+                    />
+                    {/* <Link
                       className="content-icon w-fit h-fit p-1"
                       href={`/category/${c.url}`}
                     >
-                      <Image
-                        src={c.icon_url}
-                        alt="Category Icon"
-                        width={64}
-                        height={64}
-                      />
-                    </Link>
+                    </Link> */}
                     <p>{c.name}</p>
                   </li>
                 );

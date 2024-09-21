@@ -1,18 +1,16 @@
 import { z } from 'zod';
+import { RaritySchema } from '../inputTypeSchemas/RaritySchema'
 import type { BuffWithRelations } from './BuffSchema'
 import type { BuffPartialWithRelations } from './BuffSchema'
-import type { RarityWithRelations } from './RaritySchema'
-import type { RarityPartialWithRelations } from './RaritySchema'
 import { BuffWithRelationsSchema } from './BuffSchema'
 import { BuffPartialWithRelationsSchema } from './BuffSchema'
-import { RarityWithRelationsSchema } from './RaritySchema'
-import { RarityPartialWithRelationsSchema } from './RaritySchema'
 
 /////////////////////////////////////////
 // FOOD SCHEMA
 /////////////////////////////////////////
 
 export const FoodSchema = z.object({
+  rarity: RaritySchema,
   id: z.number().int(),
   name: z.string(),
   slug: z.string(),
@@ -22,7 +20,6 @@ export const FoodSchema = z.object({
   ingame_id: z.number().int(),
   created_at: z.coerce.date(),
   updated_at: z.coerce.date(),
-  rarity_id: z.number().int(),
 })
 
 export type Food = z.infer<typeof FoodSchema>
@@ -41,14 +38,12 @@ export type FoodPartial = z.infer<typeof FoodPartialSchema>
 
 export type FoodRelations = {
   buffs: BuffWithRelations[];
-  rarity: RarityWithRelations;
 };
 
 export type FoodWithRelations = z.infer<typeof FoodSchema> & FoodRelations
 
 export const FoodWithRelationsSchema: z.ZodType<FoodWithRelations> = FoodSchema.merge(z.object({
   buffs: z.lazy(() => BuffWithRelationsSchema).array(),
-  rarity: z.lazy(() => RarityWithRelationsSchema),
 }))
 
 /////////////////////////////////////////
@@ -57,21 +52,18 @@ export const FoodWithRelationsSchema: z.ZodType<FoodWithRelations> = FoodSchema.
 
 export type FoodPartialRelations = {
   buffs?: BuffPartialWithRelations[];
-  rarity?: RarityPartialWithRelations;
 };
 
 export type FoodPartialWithRelations = z.infer<typeof FoodPartialSchema> & FoodPartialRelations
 
 export const FoodPartialWithRelationsSchema: z.ZodType<FoodPartialWithRelations> = FoodPartialSchema.merge(z.object({
   buffs: z.lazy(() => BuffPartialWithRelationsSchema).array(),
-  rarity: z.lazy(() => RarityPartialWithRelationsSchema),
 })).partial()
 
 export type FoodWithPartialRelations = z.infer<typeof FoodSchema> & FoodPartialRelations
 
 export const FoodWithPartialRelationsSchema: z.ZodType<FoodWithPartialRelations> = FoodSchema.merge(z.object({
   buffs: z.lazy(() => BuffPartialWithRelationsSchema).array(),
-  rarity: z.lazy(() => RarityPartialWithRelationsSchema),
 }).partial())
 
 export default FoodSchema;

@@ -24,38 +24,45 @@ datasource db {
 }
 
 model Food {
-  id         Int      @id @default(autoincrement())
+  id         Int    @id @default(autoincrement())
   name       String
   slug       String
   food_value Int
   icon_url   String
-  variation  Int?
+  variation  Int? // Ingame value used to deconstruct cooked items into it's ingredients. Mostly unused here.
   ingame_id  Int
-  buffs      Buff[]
-  rarity     Rarity   @default(Poor)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  buffs  Buff[]
+  rarity Rarity @default(Poor)
 }
 
 model Buff {
-  id           Int      @id @default(autoincrement())
+  id           Int   @id @default(autoincrement())
   value        Float
-  duration     Int
-  type         BuffType @relation(fields: [buff_type_id], references: [id], onDelete: Cascade, map: "typeId")
+  duration     Int // Buff duration in seconds
   buff_type_id Int
-  Food         Food     @relation(fields: [food_id], references: [id], onDelete: Cascade, map: "buffId")
   food_id      Int
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  type BuffType @relation(fields: [buff_type_id], references: [id], onDelete: Cascade, map: "typeId")
+  Food Food     @relation(fields: [food_id], references: [id], onDelete: Cascade, map: "buffId")
 }
 
 model BuffType {
-  id         Int      @id @default(autoincrement())
+  id         Int     @id @default(autoincrement())
   name       String
   slug       String
-  buff       Buff[]
+  is_percent Boolean @default(false)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  buff Buff[]
 }
 
 enum Rarity {

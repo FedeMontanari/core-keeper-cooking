@@ -9,27 +9,23 @@ const data = [
     food_value: 31,
     icon_url:
       "https://corekeeper.atma.gg/english/images/3/35/Giant_Mushroom.png",
-    variation: null,
     ingame_id: 5502,
-    rarity_id: 1,
   },
   {
     name: "Amber Larva",
     slug: "amber_larva",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/7/72/Amber_Larva.png",
-    variation: null,
+
     ingame_id: 5503,
-    rarity_id: 4,
   },
   {
     name: "Larva Meat",
     slug: "larva_meat",
     food_value: 22,
     icon_url: "https://corekeeper.atma.gg/english/images/0/0b/Larva_Meat.png",
-    variation: null,
+
     ingame_id: 1645,
-    rarity_id: 1,
   },
   {
     name: "Shiny Larva Meat",
@@ -37,99 +33,88 @@ const data = [
     food_value: 25,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/58/Shiny_Larva_Meat.png",
-    variation: null,
+
     ingame_id: 1646,
-    rarity_id: 1,
   },
   {
     name: "Mushroom",
     slug: "mushroom",
     food_value: 19,
     icon_url: "https://corekeeper.atma.gg/english/images/8/8c/Mushroom.png",
-    variation: null,
+
     ingame_id: 5500,
-    rarity_id: 1,
   },
   {
     name: "Heart Berry",
     slug: "heart_berry",
     food_value: 19,
     icon_url: "https://corekeeper.atma.gg/english/images/d/da/Heart_Berry.png",
-    variation: null,
+
     ingame_id: 8003,
-    rarity_id: 1,
   },
   {
     name: "Glow Tulip",
     slug: "glow_tulip",
     food_value: 4,
     icon_url: "https://corekeeper.atma.gg/english/images/2/28/Glow_Tulip.png",
-    variation: null,
+
     ingame_id: 8006,
-    rarity_id: 1,
   },
   {
     name: "Bomb Pepper",
     slug: "bomb_pepper",
     food_value: 10,
     icon_url: "https://corekeeper.atma.gg/english/images/4/44/Bomb_Pepper.png",
-    variation: null,
+
     ingame_id: 8009,
-    rarity_id: 1,
   },
   {
     name: "Carrock",
     slug: "carrock",
     food_value: 15,
     icon_url: "https://corekeeper.atma.gg/english/images/c/c1/Carrock.png",
-    variation: null,
+
     ingame_id: 8012,
-    rarity_id: 2,
   },
   {
     name: "Puffungi",
     slug: "puffungi",
     food_value: 10,
     icon_url: "https://corekeeper.atma.gg/english/images/8/88/Puffungi.png",
-    variation: null,
+
     ingame_id: 8015,
-    rarity_id: 2,
   },
   {
     name: "Bloat Oat",
     slug: "bloat_oat",
     food_value: 43,
     icon_url: "https://corekeeper.atma.gg/english/images/e/e6/Bloat_Oat.png",
-    variation: null,
+
     ingame_id: 8024,
-    rarity_id: 2,
   },
   {
     name: "Pewpaya",
     slug: "pewpaya",
     food_value: 20,
     icon_url: "https://corekeeper.atma.gg/english/images/6/66/Pewpaya.png",
-    variation: null,
+
     ingame_id: 8027,
-    rarity_id: 2,
   },
   {
     name: "Pinegrapple",
     slug: "pinegrapple",
     food_value: 20,
     icon_url: "https://corekeeper.atma.gg/english/images/0/09/Pinegrapple.png",
-    variation: null,
+
     ingame_id: 8030,
-    rarity_id: 2,
   },
   {
     name: "Grumpkin",
     slug: "grumpkin",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/3/31/Grumpkin.png",
-    variation: null,
+
     ingame_id: 8033,
-    rarity_id: 1,
   },
   {
     name: "Golden Heart Berry",
@@ -137,9 +122,8 @@ const data = [
     food_value: 18,
     icon_url:
       "https://corekeeper.atma.gg/english/images/4/4e/Golden_Heart_Berry.png",
-    variation: null,
+
     ingame_id: 8100,
-    rarity_id: 3,
   },
   {
     name: "Golden Glow Tulip",
@@ -147,9 +131,8 @@ const data = [
     food_value: 7,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/53/Golden_Glow_Tulip.png",
-    variation: null,
+
     ingame_id: 8101,
-    rarity_id: 3,
   },
   {
     name: "Golden Bomb Pepper",
@@ -157,9 +140,8 @@ const data = [
     food_value: 11,
     icon_url:
       "https://corekeeper.atma.gg/english/images/c/c1/Golden_Bomb_Pepper.png",
-    variation: null,
+
     ingame_id: 8102,
-    rarity_id: 3,
   },
   {
     name: "Golden Carrock",
@@ -167,9 +149,8 @@ const data = [
     food_value: 13,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/55/Golden_Carrock.png",
-    variation: null,
+
     ingame_id: 8103,
-    rarity_id: 3,
   },
   {
     name: "Golden Puffungi",
@@ -177,9 +158,8 @@ const data = [
     food_value: 10,
     icon_url:
       "https://corekeeper.atma.gg/english/images/6/6c/Golden_Puffungi.png",
-    variation: null,
+
     ingame_id: 8104,
-    rarity_id: 3,
   },
   {
     name: "Golden Bloat Oat",
@@ -187,9 +167,8 @@ const data = [
     food_value: 42,
     icon_url:
       "https://corekeeper.atma.gg/english/images/a/a2/Golden_Bloat_Oat.png",
-    variation: null,
+
     ingame_id: 8105,
-    rarity_id: 3,
   },
   {
     name: "Golden Pewpaya",
@@ -197,9 +176,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/3/37/Golden_Pewpaya.png",
-    variation: null,
+
     ingame_id: 8106,
-    rarity_id: 3,
   },
   {
     name: "Golden Pinegrapple",
@@ -207,9 +185,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/1/11/Golden_Pinegrapple.png",
-    variation: null,
+
     ingame_id: 8107,
-    rarity_id: 3,
   },
   {
     name: "Golden Grumpkin",
@@ -217,9 +194,8 @@ const data = [
     food_value: 18,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/50/Golden_Grumpkin.png",
-    variation: null,
+
     ingame_id: 8108,
-    rarity_id: 1,
   },
   {
     name: "Blue Cave Guppy",
@@ -227,9 +203,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/0/0c/Blue_Cave_Guppy.png",
-    variation: null,
+
     ingame_id: 9701,
-    rarity_id: 1,
   },
   {
     name: "Orange Cave Guppy",
@@ -237,27 +212,24 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/0/00/Orange_Cave_Guppy.png",
-    variation: null,
+
     ingame_id: 9700,
-    rarity_id: 1,
   },
   {
     name: "Rock Jaw",
     slug: "rock_jaw",
     food_value: 22,
     icon_url: "https://corekeeper.atma.gg/english/images/3/3b/Rock_Jaw.png",
-    variation: null,
+
     ingame_id: 9702,
-    rarity_id: 2,
   },
   {
     name: "Gem Crab",
     slug: "gem_crab",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/c/ca/Gem_Crab.png",
-    variation: null,
+
     ingame_id: 9703,
-    rarity_id: 3,
   },
   {
     name: "Green Blister Head",
@@ -265,9 +237,8 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/f/f3/Green_Blister_Head.png",
-    variation: null,
+
     ingame_id: 9709,
-    rarity_id: 1,
   },
   {
     name: "Yellow Blister Head",
@@ -275,36 +246,32 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/1/10/Yellow_Blister_Head.png",
-    variation: null,
+
     ingame_id: 9708,
-    rarity_id: 1,
   },
   {
     name: "Devil Worm",
     slug: "devil_worm",
     food_value: 20,
     icon_url: "https://corekeeper.atma.gg/english/images/1/16/Devil_Worm.png",
-    variation: null,
+
     ingame_id: 9710,
-    rarity_id: 2,
   },
   {
     name: "Vampire Eel",
     slug: "vampire_eel",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/6/6b/Vampire_Eel.png",
-    variation: null,
+
     ingame_id: 9711,
-    rarity_id: 3,
   },
   {
     name: "Dagger Fin",
     slug: "dagger_fin",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/b/ba/Dagger_Fin.png",
-    variation: null,
+
     ingame_id: 9704,
-    rarity_id: 1,
   },
   {
     name: "Pink Palace Fish",
@@ -312,9 +279,8 @@ const data = [
     food_value: 22,
     icon_url:
       "https://corekeeper.atma.gg/english/images/e/ea/Pink_Palace_Fish.png",
-    variation: null,
+
     ingame_id: 9705,
-    rarity_id: 2,
   },
   {
     name: "Teal Palace Fish",
@@ -322,18 +288,16 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/e/e6/Teal_Palace_Fish.png",
-    variation: null,
+
     ingame_id: 9706,
-    rarity_id: 2,
   },
   {
     name: "Crown Squid",
     slug: "crown_squid",
     food_value: 19,
     icon_url: "https://corekeeper.atma.gg/english/images/c/c4/Crown_Squid.png",
-    variation: null,
+
     ingame_id: 9707,
-    rarity_id: 4,
   },
   {
     name: "Azure Feather Fish",
@@ -341,9 +305,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/a/a4/Azure_Feather_Fish.png",
-    variation: null,
+
     ingame_id: 9715,
-    rarity_id: 1,
   },
   {
     name: "Emerald Feather Fish",
@@ -351,45 +314,40 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/c/ce/Emerald_Feather_Fish.png",
-    variation: null,
+
     ingame_id: 9716,
-    rarity_id: 1,
   },
   {
     name: "Spirit Veil",
     slug: "spirit_veil",
     food_value: 19,
     icon_url: "https://corekeeper.atma.gg/english/images/5/5f/Spirit_Veil.png",
-    variation: null,
+
     ingame_id: 9717,
-    rarity_id: 1,
   },
   {
     name: "Astral Jelly",
     slug: "astral_jelly",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/2/29/Astral_Jelly.png",
-    variation: null,
+
     ingame_id: 9718,
-    rarity_id: 3,
   },
   {
     name: "Mold Shark",
     slug: "mold_shark",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/d/d8/Mold_Shark.png",
-    variation: null,
+
     ingame_id: 9712,
-    rarity_id: 1,
   },
   {
     name: "Rot Fish",
     slug: "rot_fish",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/6/62/Rot_Fish.png",
-    variation: null,
+
     ingame_id: 9713,
-    rarity_id: 1,
   },
   {
     name: "Black Steel Urchin",
@@ -397,9 +355,8 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/5e/Black_Steel_Urchin.png",
-    variation: null,
+
     ingame_id: 9714,
-    rarity_id: 3,
   },
   {
     name: "Bottom Tracer",
@@ -407,27 +364,24 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/6/6c/Bottom_Tracer.png",
-    variation: null,
+
     ingame_id: 9719,
-    rarity_id: 1,
   },
   {
     name: "Silver Dart",
     slug: "silver_dart",
     food_value: 21,
     icon_url: "https://corekeeper.atma.gg/english/images/1/16/Silver_Dart.png",
-    variation: null,
+
     ingame_id: 9720,
-    rarity_id: 2,
   },
   {
     name: "Golden Dart",
     slug: "golden_dart",
     food_value: 22,
     icon_url: "https://corekeeper.atma.gg/english/images/f/f6/Golden_Dart.png",
-    variation: null,
+
     ingame_id: 9721,
-    rarity_id: 2,
   },
   {
     name: "Pink Coralotl",
@@ -435,9 +389,8 @@ const data = [
     food_value: 22,
     icon_url:
       "https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png",
-    variation: null,
+
     ingame_id: 9722,
-    rarity_id: 3,
   },
   {
     name: "White Coralotl",
@@ -445,9 +398,8 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/0/05/White_Coralotl.png",
-    variation: null,
+
     ingame_id: 9723,
-    rarity_id: 3,
   },
   {
     name: "Solid Spikeback",
@@ -455,9 +407,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/9/9d/Solid_Spikeback.png",
-    variation: null,
+
     ingame_id: 9724,
-    rarity_id: 1,
   },
   {
     name: "Sandy Spikeback",
@@ -465,9 +416,8 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/8/83/Sandy_Spikeback.png",
-    variation: null,
+
     ingame_id: 9725,
-    rarity_id: 1,
   },
   {
     name: "Grey Dune Tail",
@@ -475,9 +425,8 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/8/80/Grey_Dune_Tail.png",
-    variation: null,
+
     ingame_id: 9726,
-    rarity_id: 3,
   },
   {
     name: "Brown Dune Tail",
@@ -485,9 +434,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/7/7e/Brown_Dune_Tail.png",
-    variation: null,
+
     ingame_id: 9727,
-    rarity_id: 3,
   },
   {
     name: "Tornis Kingfish",
@@ -495,9 +443,8 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/6/68/Tornis_Kingfish.png",
-    variation: null,
+
     ingame_id: 9728,
-    rarity_id: 4,
   },
   {
     name: "Dark Lava Eater",
@@ -505,9 +452,8 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/5a/Dark_Lava_Eater.png",
-    variation: null,
+
     ingame_id: 9729,
-    rarity_id: 2,
   },
   {
     name: "Bright Lava Eater",
@@ -515,9 +461,8 @@ const data = [
     food_value: 20,
     icon_url:
       "https://corekeeper.atma.gg/english/images/5/55/Bright_Lava_Eater.png",
-    variation: null,
+
     ingame_id: 9730,
-    rarity_id: 2,
   },
   {
     name: "Verdant Dragonfish",
@@ -525,9 +470,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/c/cf/Verdant_Dragonfish.png",
-    variation: null,
+
     ingame_id: 9731,
-    rarity_id: 3,
   },
   {
     name: "Elder Dragonfish",
@@ -535,9 +479,8 @@ const data = [
     food_value: 19,
     icon_url:
       "https://corekeeper.atma.gg/english/images/3/34/Elder_Dragonfish.png",
-    variation: null,
+
     ingame_id: 9732,
-    rarity_id: 3,
   },
   {
     name: "Starlight Nautilus",
@@ -545,9 +488,8 @@ const data = [
     food_value: 21,
     icon_url:
       "https://corekeeper.atma.gg/english/images/c/c3/Starlight_Nautilus.png",
-    variation: null,
+
     ingame_id: 9733,
-    rarity_id: 5,
   },
 ];
 

@@ -14,7 +14,6 @@ const fetchData = async () => {
           type: true,
         },
       },
-      rarity: true,
     },
   });
   const buffTypes = await prisma.buffType.findMany();

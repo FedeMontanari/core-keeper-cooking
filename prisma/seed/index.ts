@@ -1,15 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import buffSeed from "./buffs-seed";
 import buffTypeSeed from "./buff-type-seed";
-import raritySeed from "./rarity-seed";
 import foodSeed from "./food-seed";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  await raritySeed();
-  console.log("Rarity Seeded");
-
   await foodSeed();
   console.log("Food Seeded");
 

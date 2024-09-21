@@ -1,6 +1,4 @@
 const fs = require("node:fs");
-const Cookbook: CookbookType[] = require("./Cookbook.json");
-const Buffs: BuffType[] = require("./BuffIDs.json");
 const Data: RootObject[] = require("./Data.json");
 const Category: Category = require("./Category.json");
 
@@ -143,115 +141,118 @@ interface RootObject {
   [key: string]: Item;
 }
 
-type CookbookType = {
-  name: string;
-  stats: string;
-  variation: number;
-};
-
-type BuffType = {
+interface ParsedFood {
   name: string;
   slug: string;
-};
+  food_value: number;
+  icon_url: string;
+  ingame_id: number;
+  rarity: string;
+  buffs: string[];
+}
 
-function parseCookbook() {
-  const arr: CookbookType[] = [];
+interface ParsedBuff {
+  value: number;
+  duration: number;
+}
 
-  Cookbook.forEach((it) => {
-    if (arr.some((v) => v.name === it.name)) return;
-    arr.push(it);
+interface ParsedBuffType {
+  name: string;
+  slug: string;
+  is_percent?: boolean;
+}
+
+function parseMapCb(it: string, arr: ParsedFood[]) {
+  // @ts-expect-error key isn't recognized as a string for some reason?
+  const item = Data[it];
+  const itemBuffs = item.conditionsWhenCooked.regular.filter(
+    (v: string) => !v.includes("food")
+  );
+
+  arr.push({
+    name: it,
+    slug: it.toLocaleLowerCase().replaceAll(" ", "_"),
+    food_value: parseInt(
+      item.conditionsWhenCooked.regular
+        .find((v: string) => v.includes("food"))
+        .replace("+", "")
+        .split(" ")[0]
+    ),
+    icon_url: `https://corekeeper.atma.gg/en/File:${it.replaceAll(
+      " ",
+      "_"
+    )}.png`,
+    ingame_id: item.id,
+    rarity: item.rarity,
+    buffs: itemBuffs,
   });
+}
+
+function parseFoodData() {
+  const ingredientsList = Category["Consumable"]["Ingredient"];
+  const fishList = Category["Consumable"]["Fish"];
+
+  const arr: ParsedFood[] = [];
+
+  ingredientsList.map((it) => parseMapCb(it, arr));
+
+  fishList.map((it) => parseMapCb(it, arr));
 
   try {
-    fs.writeFileSync(
-      "./scraping/cookbook-out.json",
-      JSON.stringify(arr),
-      "utf-8"
-    );
+    fs.writeFileSync("./scraping/food-out.json", JSON.stringify(arr), "utf-8");
   } catch (err) {
     console.error(err);
-    throw new Error("Error parsing Cookboon.json");
+    throw new Error("Error parsing food from Data.json");
   }
 }
 
-function parseBuffs() {
-  const arr: BuffType[] = [];
-  Buffs.forEach((it) => {
-    const slug = it.name.toLowerCase().replaceAll(" ", "_");
-    arr.push({
-      name: it.name,
-      slug,
+function parseBuffTypeData() {
+  const ParsedFoodData: ParsedFood[] = require("./food-out.json");
+
+  const arr: ParsedBuffType[] = [];
+  const buffDurationRegex = / for \d{2,} \w{2,}/;
+
+  ParsedFoodData.map((f) => {
+    f.buffs.map((b) => {
+      let split = b.split(" ");
+      split.shift();
+      let buff = split.join(" ");
+      buff = buff.replace(buffDurationRegex, "");
+      arr.push({
+        name: buff,
+        slug: buff.toLocaleLowerCase().replaceAll(" ", "_"),
+        is_percent: b.includes("%"),
+      });
     });
   });
 
   try {
-    fs.writeFileSync("./scraping/buffs-out.json", JSON.stringify(arr), "utf-8");
-  } catch (err) {
-    console.error(err);
-    throw new Error("Error parsing Cookboon.json");
-  }
-}
-
-function parseData() {
-  const ingredientsList = Category["Consumable"]["Ingredient"];
-  const fishList = Category["Consumable"]["Fish"];
-
-  const mappedIng = ingredientsList.map((it) => {
-    // @ts-expect-error key isn't recognized as a string for some reason?
-    const item = Data[it];
-    const food = {
-      name: it,
-      slug: it.toLocaleLowerCase().replaceAll(" ", "_"),
-      food_value: parseInt(
-        item.conditionsWhenCooked.regular.shift().replace("+", "").split(" ")[0]
-      ),
-      icon_url: `https://corekeeper.atma.gg/en/File:${it.replaceAll(
-        " ",
-        "_"
-      )}.png`,
-      ingame_id: item.id,
-      rarity: item.rarity,
-      buffs: item.conditionsWhenCooked.regular,
-    };
-    return food;
-  });
-
-  const mappedFish = fishList.map((it) => {
-    // @ts-expect-error key isn't recognized as a string for some reason?
-    const item = Data[it];
-    const food = {
-      name: it,
-      slug: it.toLocaleLowerCase().replaceAll(" ", "_"),
-      food_value: parseInt(
-        item.conditionsWhenCooked.regular.shift().replace("+", "").split(" ")[0]
-      ),
-      icon_url: `https://corekeeper.atma.gg/en/File:${it.replaceAll(
-        " ",
-        "_"
-      )}.png`,
-      ingame_id: item.id,
-      rarity: item.rarity,
-      buffs: item.conditionsWhenCooked.regular,
-    };
-    return food;
-  });
-
-  try {
     fs.writeFileSync(
-      "./scraping/data-out.json",
-      JSON.stringify([mappedIng, mappedFish]),
+      "./scraping/buff-types-out.json",
+      JSON.stringify(arr),
       "utf-8"
     );
-  } catch (err) {
-    console.error(err);
-    throw new Error("Error parsing Cookboon.json");
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error parsing food from Data.json");
   }
 }
 
 function main() {
-  // parseCookbook();
-  // parseBuffs();
-  parseData();
+  console.log("Parsing Food Data...");
+  parseFoodData();
+  console.log("Food Data Parsed!!");
+
+  console.log("--------------");
+
+  console.log("Parsing Buff Types...");
+  parseBuffTypeData();
+  console.log("Buff Types Parsed!!");
+
+  console.log("--------------");
+
+  console.log("Parsing Buffs...");
+  console.log("Buffs Parsed!!...");
 }
 
 main();

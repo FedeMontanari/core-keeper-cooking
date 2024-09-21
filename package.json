@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "db:seed": "prisma db seed",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:create-only": "prisma migrate create-only",
+    "migrate:reset": "prisma migrate reset",
     "scrape": "ts-node ./scraping/index.ts"
   },
   "prisma": {
