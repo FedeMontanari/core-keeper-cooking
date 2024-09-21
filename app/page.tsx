@@ -98,10 +98,7 @@ export default function Home() {
                     key={i}
                     className="flex flex-col items-center text-center"
                   >
-                    <Link
-                      className="content-icon w-fit h-fit p-2"
-                      href={`/tools/${c.url}`}
-                    >
+                    <Link className="content-icon w-fit h-fit p-2" href="/">
                       <Image
                         src={c.icon_url}
                         alt="Category Icon"
@@ -124,17 +121,17 @@ export default function Home() {
                     key={i}
                     className="flex flex-col items-center text-center"
                   >
-                    <Image
-                      src={c.icon_url}
-                      alt="Category Icon"
-                      width={64}
-                      height={64}
-                    />
-                    {/* <Link
+                    <Link
                       className="content-icon w-fit h-fit p-1"
                       href={`/category/${c.url}`}
                     >
-                    </Link> */}
+                      <Image
+                        src={c.icon_url}
+                        alt="Category Icon"
+                        width={64}
+                        height={64}
+                      />
+                    </Link>
                     <p>{c.name}</p>
                   </li>
                 );
