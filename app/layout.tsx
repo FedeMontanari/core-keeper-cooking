@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
+// import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
+import { PHProvider } from "./providers";
 
 export const metadata: Metadata = {
   title: "Core Keeper Cooking",
@@ -15,16 +16,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="w-screen h-screen overflow-x-hidden font-pixel">
-        <ThemeProvider
-          attribute="class"
-          enableSystem={false}
-          defaultTheme="dark"
-        >
-          {children}
-          <Analytics />
-        </ThemeProvider>
-      </body>
+      <PHProvider>
+        <body className="w-screen h-screen overflow-x-hidden font-pixel">
+          <ThemeProvider
+            attribute="class"
+            enableSystem={false}
+            defaultTheme="dark"
+          >
+            {children}
+            {/* <Analytics /> */}
+          </ThemeProvider>
+        </body>
+      </PHProvider>
     </html>
   );
 }
