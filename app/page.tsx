@@ -17,6 +17,9 @@ export default function Home() {
           height={197}
         />
         <h1 className="text-3xl font-bold border-b w-fit">Cooking Guide</h1>
+        <p className="text-muted-foreground italic pt-2 -mb-4">
+          Under maintenance
+        </p>
       </header>
       <section className="w-full flex flex-col items-center gap-5">
         <div className="infocard-fancy w-11/12 h-fit mt-10">
