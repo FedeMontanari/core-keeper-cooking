@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { PHProvider } from "./providers";
 import PostHogPageView from "./post-hog-page-view";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Core Keeper Cooking",
@@ -24,7 +25,9 @@ export default function RootLayout({
             enableSystem={false}
             defaultTheme="dark"
           >
-            <PostHogPageView />
+            <Suspense>
+              <PostHogPageView />
+            </Suspense>
             {children}
             {/* <Analytics /> */}
           </ThemeProvider>
