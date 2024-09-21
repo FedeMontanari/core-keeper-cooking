@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 // import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { PHProvider } from "./providers";
+import PostHogPageView from "./post-hog-page-view";
 
 export const metadata: Metadata = {
   title: "Core Keeper Cooking",
@@ -23,6 +24,7 @@ export default function RootLayout({
             enableSystem={false}
             defaultTheme="dark"
           >
+            <PostHogPageView />
             {children}
             {/* <Analytics /> */}
           </ThemeProvider>
