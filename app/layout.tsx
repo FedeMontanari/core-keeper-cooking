@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
-// import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { PHProvider } from "./providers";
 import PostHogPageView from "./post-hog-page-view";
 import { Suspense } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Core Keeper Cooking",
@@ -35,7 +35,7 @@ export default function RootLayout({
               <PostHogPageView />
             </Suspense>
             {children}
-            {/* <Analytics /> */}
+            <Toaster />
           </ThemeProvider>
         </body>
       </PHProvider>

@@ -13,6 +13,7 @@
 - Prisma
 - Typescript
 - Shadcn.UI
+- Posthog
 
 ## Setting Up The Project
 
@@ -27,7 +28,7 @@ To get started clone this repository and run the following command:
 I'm using Vercel's built in Postgres Storage, you can use any other Postgres provider such as Supabase.
 Make sure your `.env` file follows the naming from `.env.example`. If you run with a different Database provider or run your own make sure to change the variable invocation on `schema.prisma`
 
-```
+```prisma
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_PRISMA_URL") // Change these accordingly as you need.
@@ -57,11 +58,18 @@ Once dependencies are installed and Database has some data you can run the dev c
 
 `pnpm dev`
 
+## Analytics
+
+This site uses [Posthog](https://posthog.com) for metrics and analytics and it's, by extension, [GDPR](https://gdpr.eu/) compliant. <i>See [Posthog's GDPR compliance docs](https://posthog.com/docs/privacy/gdpr-compliance)</i>.
+<br/>
+This service requires a public key in order to work, for obvious reasons it is not provided within this repo, but for contribution or local development it is not required.
+
 ## To-Do:
 
 - [ ] Calculator feature.
 - [ ] Make public API.
 - [ ] Potions?
 - [ ] Integrate seed and scrape scripts together.
+- [ ] Implement cookie disclaimer.
 
 ## Contributing
