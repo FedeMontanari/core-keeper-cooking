@@ -154,6 +154,7 @@ interface ParsedFood {
 interface ParsedBuff {
   value: number;
   duration: number;
+  slug: string;
 }
 
 interface ParsedBuffType {
@@ -162,12 +163,24 @@ interface ParsedBuffType {
   is_percent?: boolean;
 }
 
+// Regex to extract buff details
+const buffPattern =
+  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)|(only once)/;
+
 function parseMapCb(it: string, arr: ParsedFood[]) {
   // @ts-expect-error key isn't recognized as a string for some reason?
   const item = Data[it];
   const itemBuffs = item.conditionsWhenCooked.regular.filter(
     (v: string) => !v.includes("food")
   );
+
+  const finalBuffs: {
+    value: number;
+    duration: number;
+    slug: string;
+  }[] = itemBuffs.map((b: string) => {
+    const match = buffPattern.exec(b);
+  });
 
   arr.push({
     name: it,
@@ -184,7 +197,7 @@ function parseMapCb(it: string, arr: ParsedFood[]) {
     )}.png`,
     ingame_id: item.id,
     rarity: item.rarity,
-    buffs: itemBuffs,
+    buffs: finalBuffs,
   });
 }
 
@@ -210,7 +223,7 @@ function parseBuffTypeData() {
   const ParsedFoodData: ParsedFood[] = require("./food-out.json");
 
   const arr: ParsedBuffType[] = [];
-  const buffDurationRegex = / for \d{2,} \w{2,}/;
+  const buffDurationRegex = / for\s(\d+)\s(min|sec)/;
 
   ParsedFoodData.map((f) => {
     f.buffs.map((b) => {
@@ -248,11 +261,6 @@ function main() {
   console.log("Parsing Buff Types...");
   parseBuffTypeData();
   console.log("Buff Types Parsed!!");
-
-  console.log("--------------");
-
-  console.log("Parsing Buffs...");
-  console.log("Buffs Parsed!!...");
 }
 
 main();

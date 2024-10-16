@@ -6,11 +6,11 @@ import foodSeed from "./food-seed";
 const prisma = new PrismaClient();
 
 async function main() {
-  await foodSeed();
-  console.log("Food Seeded");
-
   await buffTypeSeed();
   console.log("Buff Types Seeded");
+
+  await foodSeed();
+  console.log("Food Seeded");
 
   await buffSeed();
   console.log("Buffs Seeded");

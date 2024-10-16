@@ -11,7 +11,8 @@
     "migrate:dev": "prisma migrate dev",
     "migrate:create-only": "prisma migrate create-only",
     "migrate:reset": "prisma migrate reset",
-    "scrape": "ts-node ./scraping/index.ts"
+    "scrape": "ts-node ./scraping/index.ts",
+    "generate": "prisma generate"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} ./prisma/seed/index.ts"

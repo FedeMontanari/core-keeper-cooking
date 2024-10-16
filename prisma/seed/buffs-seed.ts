@@ -1,403 +1,104 @@
 import { PrismaClient } from "@prisma/client";
+import FoodData from "../../scraping/food-out.json";
+import { RarityType } from "../zod/inputTypeSchemas/RaritySchema";
 
 const prisma = new PrismaClient();
 
-const data = [
-  {
-    value: 24,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 1,
-  },
-  {
-    value: 25,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 6,
-  },
-  {
-    value: 4,
-    duration: 2,
-    buff_type_id: 4,
-    food_id: 7,
-  },
-  {
-    value: 21,
-    duration: 1,
-    buff_type_id: 5,
-    food_id: 8,
-  },
-  {
-    value: 23,
-    duration: 5,
-    buff_type_id: 7,
-    food_id: 9,
-  },
-  {
-    value: 22.4,
-    duration: 5,
-    buff_type_id: 10,
-    food_id: 12,
-  },
-  {
-    value: 6,
-    duration: 2,
-    buff_type_id: 1,
-    food_id: 3,
-  },
-  {
-    value: 16,
-    duration: 2,
-    buff_type_id: 1,
-    food_id: 4,
-  },
-  {
-    value: 4,
-    duration: 2,
-    buff_type_id: 3,
-    food_id: 4,
-  },
-  {
-    value: 52,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 2,
-  },
-  {
-    value: 22.4,
-    duration: 5,
-    buff_type_id: 12,
-    food_id: 13,
-  },
-  {
-    value: 50,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 15,
-  },
-  {
-    value: 17.1,
-    duration: 1,
-    buff_type_id: 12,
-    food_id: 15,
-  },
-  {
-    value: 7,
-    duration: 2,
-    buff_type_id: 4,
-    food_id: 16,
-  },
-  {
-    value: 2.9,
-    duration: 1,
-    buff_type_id: 11,
-    food_id: 16,
-  },
-  {
-    value: 45,
-    duration: 5,
-    buff_type_id: 14,
-    food_id: 14,
-  },
-  {
-    value: 26.9,
-    duration: 1,
-    buff_type_id: 5,
-    food_id: 17,
-  },
-  {
-    value: 3,
-    duration: 1,
-    buff_type_id: 13,
-    food_id: 17,
-  },
-  {
-    value: 26,
-    duration: 5,
-    buff_type_id: 7,
-    food_id: 18,
-  },
-  {
-    value: 3.7,
-    duration: 5,
-    buff_type_id: 11,
-    food_id: 21,
-  },
-  {
-    value: 28.2,
-    duration: 5,
-    buff_type_id: 10,
-    food_id: 21,
-  },
-  {
-    value: 28.2,
-    duration: 5,
-    buff_type_id: 12,
-    food_id: 22,
-  },
-  {
-    value: 3.7,
-    duration: 5,
-    buff_type_id: 13,
-    food_id: 22,
-  },
-  {
-    value: 5,
-    duration: 5,
-    buff_type_id: 18,
-    food_id: 24,
-  },
-  {
-    value: 71,
-    duration: 5,
-    buff_type_id: 14,
-    food_id: 23,
-  },
-  {
-    value: 2.8,
-    duration: 5,
-    buff_type_id: 15,
-    food_id: 23,
-  },
-  {
-    value: 8,
-    duration: 5,
-    buff_type_id: 14,
-    food_id: 25,
-  },
-  {
-    value: 15.9,
-    duration: 5,
-    buff_type_id: 12,
-    food_id: 26,
-  },
-  {
-    value: 14,
-    duration: 5,
-    buff_type_id: 7,
-    food_id: 27,
-  },
-  {
-    value: 0,
-    duration: 5,
-    buff_type_id: 19,
-    food_id: 28,
-  },
-  {
-    value: 0,
-    duration: 5,
-    buff_type_id: 20,
-    food_id: 29,
-  },
-  {
-    value: 22.8,
-    duration: 5,
-    buff_type_id: 10,
-    food_id: 30,
-  },
-  {
-    value: 3,
-    duration: 5,
-    buff_type_id: 3,
-    food_id: 31,
-  },
-  {
-    value: 13,
-    duration: 5,
-    buff_type_id: 23,
-    food_id: 32,
-  },
-  {
-    value: 3.3,
-    duration: 5,
-    buff_type_id: 13,
-    food_id: 33,
-  },
-  {
-    value: 3.8,
-    duration: 5,
-    buff_type_id: 11,
-    food_id: 34,
-  },
-  {
-    value: 29,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 37,
-  },
-  {
-    value: 7,
-    duration: 5,
-    buff_type_id: 1,
-    food_id: 37,
-  },
-  {
-    value: 36.2,
-    duration: 2,
-    buff_type_id: 5,
-    food_id: 38,
-  },
-  {
-    value: 63,
-    duration: 5,
-    buff_type_id: 24,
-    food_id: 39,
-  },
-  {
-    value: 38.6,
-    duration: 5,
-    buff_type_id: 12,
-    food_id: 40,
-  },
-  {
-    value: 0,
-    duration: 5,
-    buff_type_id: 21,
-    food_id: 41,
-  },
-  {
-    value: 22,
-    duration: 5,
-    buff_type_id: 7,
-    food_id: 42,
-  },
-  {
-    value: 15,
-    duration: 5,
-    buff_type_id: 23,
-    food_id: 42,
-  },
-  {
-    value: 69,
-    duration: 5,
-    buff_type_id: 14,
-    food_id: 43,
-  },
-  {
-    value: 31,
-    duration: 5,
-    buff_type_id: 2,
-    food_id: 44,
-  },
-  {
-    value: 14,
-    duration: 5,
-    buff_type_id: 18,
-    food_id: 45,
-  },
-  {
-    value: 53.3,
-    duration: 5,
-    buff_type_id: 10,
-    food_id: 46,
-  },
-  {
-    value: 6.5,
-    duration: 5,
-    buff_type_id: 15,
-    food_id: 47,
-  },
-  {
-    value: 78,
-    duration: 5,
-    buff_type_id: 6,
-    food_id: 49,
-  },
-  {
-    value: 50,
-    duration: 5,
-    buff_type_id: 23,
-    food_id: 49,
-  },
-  {
-    value: 38,
-    duration: 5,
-    buff_type_id: 7,
-    food_id: 48,
-  },
-  {
-    value: 50,
-    duration: 5,
-    buff_type_id: 23,
-    food_id: 48,
-  },
-  {
-    value: 6.4,
-    duration: 5,
-    buff_type_id: 13,
-    food_id: 50,
-  },
-  {
-    value: 7,
-    duration: 5,
-    buff_type_id: 3,
-    food_id: 53,
-  },
-  {
-    value: 50.4,
-    duration: 5,
-    buff_type_id: 25,
-    food_id: 52,
-  },
-  {
-    value: 21,
-    duration: 5,
-    buff_type_id: 26,
-    food_id: 54,
-  },
-  {
-    value: 6.4,
-    duration: 5,
-    buff_type_id: 11,
-    food_id: 51,
-  },
-  {
-    value: 41,
-    duration: 5,
-    buff_type_id: 2,
-    food_id: 55,
-  },
-  {
-    value: 0,
-    duration: 5,
-    buff_type_id: 22,
-    food_id: 55,
-  },
-  {
-    value: 0,
-    duration: 5,
-    buff_type_id: 22,
-    food_id: 56,
-  },
-  {
-    value: 18,
-    duration: 5,
-    buff_type_id: 1,
-    food_id: 56,
-  },
-  {
-    value: 4.7,
-    duration: 5,
-    buff_type_id: 11,
-    food_id: 57,
-  },
-  {
-    value: 9,
-    duration: 5,
-    buff_type_id: 1,
-    food_id: 57,
-  },
-  {
-    value: 4.7,
-    duration: 5,
-    buff_type_id: 13,
-    food_id: 57,
-  },
-];
+interface FoodData {
+  name: string;
+  slug: string;
+  food_value: number;
+  icon_url: string;
+  ingame_id: number;
+  rarity: RarityType;
+  buffs: string[];
+}
+
+const data = FoodData as FoodData[];
+
+// Regex to extract buff details
+const buffPattern =
+  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)|(only once)/;
+
+const parsedDataPromises = data.flatMap((v) => {
+  return v.buffs.map(async (b) => {
+    const food = await prisma.food.findFirst({
+      where: {
+        slug: v.slug,
+      },
+    });
+    const match = buffPattern.exec(b);
+
+    if (!food || !match) return;
+
+    if (match[5]) {
+      // Handle immunity buffs
+      const buffType = await prisma.buffType.findFirst({
+        where: {
+          name: {
+            contains: match[5].trim().toLowerCase(),
+          },
+        },
+      });
+
+      if (!buffType) return;
+
+      return {
+        value: 42,
+        duration: 60 * 10,
+        buff_type_id: buffType.id,
+        food_id: food.id,
+      };
+    } else if (match[6]) {
+      // Handle "only once" buffs
+      const buffType = await prisma.buffType.findFirst({
+        where: {
+          name: {
+            contains: match[2]?.trim().toLowerCase(),
+          },
+        },
+      });
+
+      if (!buffType) return;
+      return {
+        value: parseFloat(match[1]),
+        duration: 0,
+        buff_type_id: buffType.id,
+        food_id: food.id,
+      };
+    } else {
+      const buffType = await prisma.buffType.findFirst({
+        where: {
+          name: {
+            contains: match[2].trim().toLowerCase(),
+          },
+        },
+      });
+
+      if (!buffType) return;
+
+      const value = parseFloat(match[1]);
+      const durationUnit = match[4];
+      const duration = parseInt(match[3]) * (durationUnit === "min" ? 60 : 1);
+
+      return {
+        value,
+        duration,
+        buff_type_id: buffType.id,
+        food_id: food.id,
+      };
+    }
+  });
+});
 
 export default async function buffSeed() {
+  function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
+    return value !== null && value !== undefined;
+  }
+  const parsedData = await Promise.all(parsedDataPromises);
   await prisma.buff.deleteMany();
   return await prisma.buff.createMany({
-    data,
+    data: parsedData.filter(notEmpty),
+    skipDuplicates: true,
   });
 }

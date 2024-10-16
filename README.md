@@ -21,25 +21,48 @@
 
 To get started clone this repository and run the following command:
 
-`pnpm install`
+```
+pnpm install
+```
 
 ### Database
 
 I'm using Vercel's built in Postgres Storage, you can use any other Postgres provider such as Supabase.
-Make sure your `.env` file follows the naming from `.env.example`. If you run with a different Database provider or run your own make sure to change the variable invocation on `schema.prisma`
+Make sure your `.env` file follows the naming from `.env.example`.
 
 ```prisma
 datasource db {
   provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL") // Change these accordingly as you need.
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  url       = env("POSTGRES_PRISMA_URL")
 }
 ```
+
+#### Local Database
+
+I also included a docker-compose file to spin a postgres image to do work locally.
+
+To use this run the following command on your terminal
+
+```
+docker-compose -f docker-compose.yml -p core-keeper-app up -d database
+```
+
+#### Migrating
+
+Once you have either a remote or local database set up and environment variables set up you can run the following command to get the tables up
+
+```
+pnpm migrate:dev
+```
+
+#### Seeding
 
 This project includes a seeding script for a basic (and probably outdated) dataset.
 After installing the dependencies you can run the following command to populate the DB
 
-`pnpm db:seed`
+```
+pnpm db:seed
+```
 
 ### Scraping
 
