@@ -160,26 +160,29 @@ interface ParsedFood {
 
 // Regex to extract buff details
 const buffPattern =
-  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)|\(?only once\)?/;
+  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)/;
+
+const onlyOnce = /([+]?\d*\.?\d+)\s(max\shealth)\s\(only\sonce\)/;
 
 function buffParseCb(buff: string) {
-  const match = buffPattern.exec(buff);
+  let match = buffPattern.exec(buff);
 
-  if (!match) return;
+  if (!match) {
+    match = onlyOnce.exec(buff);
+    if (match) {
+      return {
+        value: parseInt(match[1]),
+        duration: -1,
+        name: match[2],
+      };
+    } else return;
+  }
 
   if (match[5]) {
     // Handle immunity buffs
     return {
       value: -1,
       duration: 10 * 60,
-      name: match[2],
-    };
-  } else if (match[6]) {
-    // Handle "only once" buffs
-    console.log("Only Once Buffs Matcher; Buff Value: ", match[1]);
-    return {
-      value: parseFloat(match[1]),
-      duration: -1,
       name: match[2],
     };
   } else {

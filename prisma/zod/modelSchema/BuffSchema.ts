@@ -38,14 +38,14 @@ export type BuffPartial = z.infer<typeof BuffPartialSchema>
 
 export type BuffRelations = {
   type: BuffTypeWithRelations;
-  Food: FoodWithRelations;
+  food: FoodWithRelations;
 };
 
 export type BuffWithRelations = z.infer<typeof BuffSchema> & BuffRelations
 
 export const BuffWithRelationsSchema: z.ZodType<BuffWithRelations> = BuffSchema.merge(z.object({
   type: z.lazy(() => BuffTypeWithRelationsSchema),
-  Food: z.lazy(() => FoodWithRelationsSchema),
+  food: z.lazy(() => FoodWithRelationsSchema),
 }))
 
 /////////////////////////////////////////
@@ -54,21 +54,21 @@ export const BuffWithRelationsSchema: z.ZodType<BuffWithRelations> = BuffSchema.
 
 export type BuffPartialRelations = {
   type?: BuffTypePartialWithRelations;
-  Food?: FoodPartialWithRelations;
+  food?: FoodPartialWithRelations;
 };
 
 export type BuffPartialWithRelations = z.infer<typeof BuffPartialSchema> & BuffPartialRelations
 
 export const BuffPartialWithRelationsSchema: z.ZodType<BuffPartialWithRelations> = BuffPartialSchema.merge(z.object({
   type: z.lazy(() => BuffTypePartialWithRelationsSchema),
-  Food: z.lazy(() => FoodPartialWithRelationsSchema),
+  food: z.lazy(() => FoodPartialWithRelationsSchema),
 })).partial()
 
 export type BuffWithPartialRelations = z.infer<typeof BuffSchema> & BuffPartialRelations
 
 export const BuffWithPartialRelationsSchema: z.ZodType<BuffWithPartialRelations> = BuffSchema.merge(z.object({
   type: z.lazy(() => BuffTypePartialWithRelationsSchema),
-  Food: z.lazy(() => FoodPartialWithRelationsSchema),
+  food: z.lazy(() => FoodPartialWithRelationsSchema),
 }).partial())
 
 export default BuffSchema;

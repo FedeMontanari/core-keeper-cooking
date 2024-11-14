@@ -14,8 +14,6 @@ const data: BuffType[] = BuffTypesData.filter(
 );
 
 export default async function buffTypeSeed() {
-  await prisma.buffType.deleteMany();
-
   return await prisma.buffType.createMany({
     data,
     skipDuplicates: true,

@@ -11,13 +11,17 @@ interface FoodData {
   icon_url: string;
   ingame_id: number;
   rarity: RarityType;
-  buffs?: string[];
+  buffs: (
+    | { value: number; duration: number; name: string }
+    | { value: number; duration: number; name?: undefined }
+  )[];
+  buff_types_unparsed: string[];
   variation?: number;
 }
 
 const data = FoodData as FoodData[];
 
-const parsedData: FoodData[] = data.map((v) => {
+const parsedData = data.map((v) => {
   return {
     name: v.name,
     slug: v.slug,
@@ -29,8 +33,6 @@ const parsedData: FoodData[] = data.map((v) => {
 });
 
 export default async function foodSeed() {
-  await prisma.food.deleteMany();
-
   return await prisma.food.createMany({
     data: parsedData,
     skipDuplicates: true,
