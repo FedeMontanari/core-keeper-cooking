@@ -1,7 +1,8 @@
-const fs = require("node:fs");
 const Data: RootObject[] = require("./Data.json");
 const Category: Category = require("./Category.json");
 
+import fs from "node:fs";
+import path from "node:path";
 interface Category {
   [key: string]: {
     [subcategory: string]: string[];
@@ -26,6 +27,11 @@ interface Item {
   damageReduction?: number;
   faction?: string;
   conditions?: string[] | null; // This can include 'null' based on some items
+  conditionsWhenCooked?: {
+    regular: string[];
+    rare: string[];
+    epic: string[];
+  };
   use?: string;
   equip?: Equip;
   loot?: Loot;
@@ -148,39 +154,52 @@ interface ParsedFood {
   icon_url: string;
   ingame_id: number;
   rarity: string;
-  buffs: string[];
-}
-
-interface ParsedBuff {
-  value: number;
-  duration: number;
-  slug: string;
-}
-
-interface ParsedBuffType {
-  name: string;
-  slug: string;
-  is_percent?: boolean;
+  buffs: ({ value: number; duration: number; name: string } | undefined)[];
+  buff_types_unparsed: string[];
 }
 
 // Regex to extract buff details
 const buffPattern =
-  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)|(only once)/;
+  /([+-]?\d*\.?\d+)%?\s*(.*?)\sfor\s(\d+)\s(min|sec)|Immune to (.*)|\(?only once\)?/;
+
+function buffParseCb(buff: string) {
+  const match = buffPattern.exec(buff);
+
+  if (!match) return;
+
+  if (match[5]) {
+    // Handle immunity buffs
+    return {
+      value: -1,
+      duration: 10 * 60,
+      name: match[2],
+    };
+  } else if (match[6]) {
+    // Handle "only once" buffs
+    console.log("Only Once Buffs Matcher; Buff Value: ", match[1]);
+    return {
+      value: parseFloat(match[1]),
+      duration: -1,
+      name: match[2],
+    };
+  } else {
+    const durationUnit = match[4];
+    return {
+      value: parseFloat(match[1]),
+      duration: parseInt(match[3]) * (durationUnit === "min" ? 60 : 1),
+      name: match[2],
+    };
+  }
+}
 
 function parseMapCb(it: string, arr: ParsedFood[]) {
-  // @ts-expect-error key isn't recognized as a string for some reason?
+  // Ignore this compiler error; Typescript is whack
   const item = Data[it];
-  const itemBuffs = item.conditionsWhenCooked.regular.filter(
+  const itemBuffs: string[] = item.conditionsWhenCooked.regular.filter(
     (v: string) => !v.includes("food")
   );
 
-  const finalBuffs: {
-    value: number;
-    duration: number;
-    slug: string;
-  }[] = itemBuffs.map((b: string) => {
-    const match = buffPattern.exec(b);
-  });
+  const parsedBuffs = itemBuffs.map((b) => buffParseCb(b));
 
   arr.push({
     name: it,
@@ -197,7 +216,8 @@ function parseMapCb(it: string, arr: ParsedFood[]) {
     )}.png`,
     ingame_id: item.id,
     rarity: item.rarity,
-    buffs: finalBuffs,
+    buffs: parsedBuffs,
+    buff_types_unparsed: itemBuffs,
   });
 }
 
@@ -222,11 +242,16 @@ function parseFoodData() {
 function parseBuffTypeData() {
   const ParsedFoodData: ParsedFood[] = require("./food-out.json");
 
-  const arr: ParsedBuffType[] = [];
-  const buffDurationRegex = / for\s(\d+)\s(min|sec)/;
+  const arr: {
+    name: string;
+    slug: string;
+    is_percent: boolean;
+  }[] = [];
+
+  const buffDurationRegex = / for \d{2,} \w{2,}/;
 
   ParsedFoodData.map((f) => {
-    f.buffs.map((b) => {
+    f.buff_types_unparsed.map((b) => {
       let split = b.split(" ");
       split.shift();
       let buff = split.join(" ");
