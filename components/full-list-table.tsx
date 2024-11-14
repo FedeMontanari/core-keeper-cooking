@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import {
   Select,
   SelectContent,
@@ -17,22 +16,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "./ui/input";
-import { Buff, Food } from "@prisma/client";
-import type { BuffType } from "@/types/food-buffs";
 import { Button } from "./ui/button";
+import { BuffType } from "@/prisma/zod/modelSchema/BuffTypeSchema";
+import { FoodWithPartialRelations } from "@/prisma/zod/modelSchema/FoodSchema";
 
 interface TableCaption {
   show: boolean;
   content: string;
-}
-
-interface FoodBuff extends Food {
-  buffs: Buff[];
 }
 
 export default function FullListTable({
@@ -42,7 +36,7 @@ export default function FullListTable({
   searchbar,
   ...props
 }: {
-  list: FoodBuff[];
+  list: FoodWithPartialRelations[];
   caption?: TableCaption;
   searchbar?: boolean;
   buffTypes?: BuffType[];
@@ -79,14 +73,6 @@ export default function FullListTable({
       });
       break;
 
-    case "rarity-asc":
-      list.sort((a, b) => a.rarity_id - b.rarity_id);
-      break;
-
-    case "rarity-desc":
-      list.sort((a, b) => b.rarity_id - a.rarity_id);
-      break;
-
     default:
       break;
   }
@@ -108,13 +94,13 @@ export default function FullListTable({
         <div className="flex flex-col flex-nowrap items-center justify-center">
           <Select onValueChange={(v) => setSortValue(v)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Filter by..." />
+              <SelectValue placeholder="Sort" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="desc">A-Z</SelectItem>
               <SelectItem value="asc">Z-A</SelectItem>
-              <SelectItem value="rarity-asc">Rarity Asc.</SelectItem>
-              <SelectItem value="rarity-desc">Rarity Desc.</SelectItem>
+              {/* <SelectItem value="rarity-asc">Rarity Asc.</SelectItem>
+              <SelectItem value="rarity-desc">Rarity Desc.</SelectItem> */}
             </SelectContent>
           </Select>
         </div>
@@ -144,12 +130,12 @@ export default function FullListTable({
                 <TableCell>
                   <Image
                     className="inline mr-2"
-                    src={f.icon_url}
+                    src="https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png"
                     alt="Icon"
                     width={32}
                     height={32}
                   />
-                  <span className={`rarity-${f.rarity_id}`}>{f.name}</span>
+                  <span className={`rarity-${f.rarity}`}>{f.name}</span>
                 </TableCell>
                 <TableCell>+{f.food_value} Food</TableCell>
                 <TableCell>
@@ -158,10 +144,21 @@ export default function FullListTable({
                       const buffType = buffTypes?.find(
                         (bt) => bt.id === b.buff_type_id
                       );
-                      const value = b.value ? `+${b.value} ` : "";
+                      const value = b.value ? `+${b.value}` : "";
+
+                      let duration;
+                      if (b.duration) {
+                        duration =
+                          b.duration >= 60
+                            ? ` for ${b.duration / 60} min`
+                            : ` for ${b.duration} sec`;
+                      }
+
                       return (
                         <li key={b.id}>
-                          {`${value}${buffType?.name} for ${b.duration} min.`}
+                          {`${value}${buffType?.is_percent ? "%" : ""} ${
+                            buffType?.name
+                          }${b.duration === -1 ? "" : duration}.`}
                         </li>
                       );
                     })}

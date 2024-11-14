@@ -97,5 +97,6 @@ This service requires a public key in order to work, for obvious reasons it is n
 - [ ] Potions?
 - [x] Integrate seed and scrape scripts together.
 - [ ] Implement cookie disclaimer.
+- [ ] Figure out a way to implement Cysidus' Wiki images for ingredients
 
 ## Contributing

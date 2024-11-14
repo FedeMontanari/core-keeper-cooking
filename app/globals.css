@@ -100,33 +100,33 @@
 }
 
 /* Poor */
-.rarity-0 {
+.rarity-Poor {
   color: rgb(180, 180, 180);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-1 {
+.rarity-Common {
   color: rgb(255, 255, 255);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-2 {
+.rarity-Uncommon {
   color: rgb(66, 203, 90);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-3 {
+.rarity-Rare {
   color: rgb(59, 147, 255);
   text-shadow: var(--rarity-outline);
 }
 
-.rarity-4 {
+.rarity-Epic {
   color: rgb(209, 69, 194);
   text-shadow: var(--rarity-outline);
 }
 
 /* Legendary */
-.rarity-5 {
+.rarity-Legendary {
   color: rgb(255, 186, 24);
   text-shadow: var(--rarity-outline);
 }
