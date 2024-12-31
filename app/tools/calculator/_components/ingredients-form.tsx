@@ -36,6 +36,8 @@ import {
   BuffPartialWithRelations,
   BuffWithPartialRelations,
 } from "@/prisma/zod/modelSchema/BuffSchema";
+import { useState } from "react";
+import FullListTable from "@/components/full-list-table";
 
 const formSchema = z.object({
   ingOne: FoodWithPartialRelationsSchema,
@@ -47,6 +49,10 @@ export default function IngredientsForm({
 }: {
   ingredients: z.infer<typeof FoodWithPartialRelationsSchema>[];
 }) {
+  const [finalDish, setFinalDish] = useState<FoodPartialWithRelations | null>(
+    null
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,7 +66,8 @@ export default function IngredientsForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(calculateFood(values));
+    const finalDish = calculateFood(values);
+    setFinalDish(finalDish);
   }
 
   function getMaxValue(
@@ -159,7 +166,7 @@ export default function IngredientsForm({
                             <Image
                               width={32}
                               height={32}
-                              src={field.value.icon_url}
+                              src="https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png"
                               alt="Ingredient Icon"
                               className="mr-1"
                             />
@@ -196,7 +203,7 @@ export default function IngredientsForm({
                               <Image
                                 width={32}
                                 height={32}
-                                src={ing.icon_url}
+                                src="https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png"
                                 alt="Ingredient Icon"
                                 className="mr-1"
                               />
@@ -242,7 +249,7 @@ export default function IngredientsForm({
                             <Image
                               width={32}
                               height={32}
-                              src={field.value.icon_url}
+                              src="https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png"
                               alt="Ingredient Icon"
                               className="mr-1"
                             />
@@ -279,7 +286,7 @@ export default function IngredientsForm({
                               <Image
                                 width={32}
                                 height={32}
-                                src={ing.icon_url}
+                                src="https://corekeeper.atma.gg/english/images/b/b1/Pink_Coralotl.png"
                                 alt="Ingredient Icon"
                                 className="mr-1"
                               />
@@ -306,7 +313,20 @@ export default function IngredientsForm({
           <Button type="submit">Calculate</Button>
         </form>
       </Form>
-      <div></div>
+      <div>
+        {finalDish && (
+          <div>
+            <h1>Final Dish</h1>
+            <p>Food: {finalDish.food_value}</p>
+            <p>Buffs:</p>
+            {finalDish.buffs?.map((buff) => (
+              <p key={buff.id}>
+                {buff.type?.name}: {buff.value}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }
